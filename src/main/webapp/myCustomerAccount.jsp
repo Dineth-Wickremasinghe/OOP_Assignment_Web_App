@@ -25,6 +25,7 @@
     if(auth == null) {
         response.sendRedirect("sign-in.jsp");
     }
+
     CustomerManager cm = new CustomerManager();
     Customer c = cm.getCustomerDetails(auth);
 
