@@ -1,5 +1,5 @@
-<%@ page import="org.example.oop_assignment_web_app.Customer" %>
-<%@ page import="org.example.oop_assignment_web_app.CustomerManager" %>
+<%@ page import="org.example.oop_assignment_web_app.Entity.Customer" %>
+<%@ page import="org.example.oop_assignment_web_app.Control.CustomerManager" %>
 
 <%@ page contentType="text/html;charset=UTF-8"  %>
 <html>

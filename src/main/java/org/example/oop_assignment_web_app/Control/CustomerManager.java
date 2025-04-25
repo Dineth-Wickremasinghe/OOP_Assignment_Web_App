@@ -1,4 +1,6 @@
-package org.example.oop_assignment_web_app;
+package org.example.oop_assignment_web_app.Control;
+
+import org.example.oop_assignment_web_app.Entity.Customer;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
