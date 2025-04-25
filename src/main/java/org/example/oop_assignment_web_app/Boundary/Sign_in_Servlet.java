@@ -1,4 +1,4 @@
-package org.example.oop_assignment_web_app;
+package org.example.oop_assignment_web_app.Boundary;
 
 
 import jakarta.servlet.annotation.WebServlet;
@@ -6,6 +6,7 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.example.oop_assignment_web_app.Control.CustomerManager;
 
 import java.io.IOException;
 
