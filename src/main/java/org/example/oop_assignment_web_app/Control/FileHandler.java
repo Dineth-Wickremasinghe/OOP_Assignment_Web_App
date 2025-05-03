@@ -2,11 +2,11 @@ package org.example.oop_assignment_web_app.Control;
 
 import java.io.*;
 
-public class FileHandler2 {
+public class FileHandler {
 
     public static void createFile(String fileName) {
 
-        String directoryName = "Files";
+        String directoryName = "C:/Files";
 
 
         File directory = new File(directoryName);

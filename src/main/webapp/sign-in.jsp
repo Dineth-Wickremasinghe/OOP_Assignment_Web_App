@@ -24,7 +24,7 @@
         <label for="floatingPassword">Password</label>
     </div>
 
-    <button type="submit" class="btn btn-secondary">Submit</button> <!-- Fixed button type -->
+    <button type="submit" class="btn btn-secondary">Submit</button>
 </form>
 
 </body>

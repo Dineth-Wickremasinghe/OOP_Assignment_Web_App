@@ -2,13 +2,12 @@ package org.example.oop_assignment_web_app.Control;
 
 import org.example.oop_assignment_web_app.Entity.Customer;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 public class CustomerManager {
-    private static final String CUSTOMER_FILE = "Files/customer1.txt";
+    private static final String CUSTOMER_FILE = "C:/Files/customer1.txt";
     Customer customer;
+
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
@@ -26,10 +25,10 @@ public class CustomerManager {
 
             String line = String.join(",", c.getName(), c.getEmail(), hashedPassword, c.getType());
             try{
-                FileHandler2.createFile(CUSTOMER_FILE);
+                FileHandler.createFile(CUSTOMER_FILE);
 
 
-                FileHandler2.fileWrite(line, CUSTOMER_FILE);
+                FileHandler.fileWrite(line, CUSTOMER_FILE);
 
             }
             catch (Exception e){
@@ -87,6 +86,62 @@ public class CustomerManager {
         }
         return null; // Return null if user not found
     }
+
+    public void editCustomer(Customer c) {
+        File file = new File(CUSTOMER_FILE);
+        File tempFile = new File(CUSTOMER_FILE + ".tmp");
+        String hashedPassword = PasswordUtil.hashPassword(c.getPassword());
+        try (BufferedReader br = new BufferedReader(new FileReader(file));
+             PrintWriter pw = new PrintWriter(new FileWriter(tempFile))) {
+
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(",");
+                if (parts[0].equals(c.getName())) {
+                    String text = String.join(",", c.getName(), c.getEmail(), hashedPassword, c.getType());
+                    pw.println(text);
+                } else {
+                    pw.println(line);
+                }
+            }
+        }
+        catch (IOException e) {
+            System.out.println("Error editing file!");
+        }
+
+        file.delete();
+        tempFile.renameTo(file);
+
+
+    }
+
+    public void deleteCustomer(String username) {
+        File file = new File(CUSTOMER_FILE);
+        File tempFile = new File(CUSTOMER_FILE + ".tmp");
+
+        try (BufferedReader br = new BufferedReader(new FileReader(file));
+             PrintWriter pw = new PrintWriter(new FileWriter(tempFile))) {
+
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(",");
+                if (!parts[0].equals(username)) {
+                    pw.println(line);
+                }
+            }
+        }
+        catch (IOException e) {
+            System.out.println("Error deleting file!");
+        }
+
+        file.delete();
+        tempFile.renameTo(file);
+
+
+    }
+
+
+
 }
 
 
