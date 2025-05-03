@@ -12,7 +12,7 @@ import java.io.IOException;
 
 @WebServlet(name = "EditCustomerServlet", value = "/EditCustomerServlet")
 public class EditCustomerServlet extends HttpServlet {
-    
+
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
