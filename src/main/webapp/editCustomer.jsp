@@ -12,8 +12,7 @@
     <title>Edit Customer Account</title>
 </head>
 <body>
-<%@ page import="java.io.*, java.util.*" %>
-<%@ page session="true" %>
+<%@ page import="java.io.*" %>
 <%
     String auth = null;
 
