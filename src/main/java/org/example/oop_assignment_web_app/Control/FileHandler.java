@@ -5,10 +5,11 @@ import java.util.LinkedList;
 import org.example.oop_assignment_web_app.Entity.Car;
 
 public class FileHandler {
+    static String directoryName = "C:/Files";
 
     public static void createFile(String fileName) {
 
-        String directoryName = "C:/Files";
+
 
 
         File directory = new File(directoryName);
