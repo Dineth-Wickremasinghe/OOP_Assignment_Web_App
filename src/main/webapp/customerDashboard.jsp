@@ -45,6 +45,12 @@
     }
 %>
 
+<nav class="navbar bg-body-tertiary">
+    <form action="logout" method="post" >
+        <a href="logout" class="btn btn-primary" style="position: absolute; top: 10px; right: 10px;">Log Out</a>
+    </form>
+</nav>
+
 <div class="container dashboard-header">
     <h1>Customer Dashboard</h1>
     <h2 class="display-5">Welcome to Your Dashboard</h2>
@@ -55,7 +61,7 @@
     <div class="row g-4">
         <div class="col-md-4">
             <div class="card shadow-sm h-100">
-                <img src="images/booking.jpg" class="card-img-top" alt="Manage Bookings">
+
                 <div class="card-body">
                     <h5 class="card-title">Manage Bookings</h5>
                     <p class="card-text">Schedule car inspections and manage your existing bookings.</p>
@@ -66,7 +72,7 @@
 
         <div class="col-md-4">
             <div class="card shadow-sm h-100">
-                <img src="images/cars.jpg" class="card-img-top" alt="View Cars">
+
                 <div class="card-body">
                     <h5 class="card-title">View Cars</h5>
                     <p class="card-text">Browse our collection of second-hand cars available for purchase.</p>
@@ -77,7 +83,7 @@
 
         <div class="col-md-4">
             <div class="card shadow-sm h-100">
-                <img src="images/account.jpg" class="card-img-top" alt="Edit Account">
+
                 <div class="card-body">
                     <h5 class="card-title">Edit Account</h5>
                     <p class="card-text">Update your personal information and change account settings.</p>

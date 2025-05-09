@@ -3,10 +3,11 @@ package org.example.oop_assignment_web_app.Control;
 import java.io.*;
 
 public class FileHandler {
+    static String directoryName = "C:/Files";
 
     public static void createFile(String fileName) {
 
-        String directoryName = "C:/Files";
+
 
 
         File directory = new File(directoryName);

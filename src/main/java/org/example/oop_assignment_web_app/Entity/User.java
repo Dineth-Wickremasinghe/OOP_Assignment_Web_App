@@ -1,9 +1,9 @@
 package org.example.oop_assignment_web_app.Entity;
 
 public class User {
-    String name;
-    String email;
-    String password;
+    private String name;
+    private String email;
+    private String password;
 
 
     public User(){
