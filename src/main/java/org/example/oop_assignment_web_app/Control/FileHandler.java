@@ -1,6 +1,8 @@
 package org.example.oop_assignment_web_app.Control;
 
 import java.io.*;
+import java.util.LinkedList;
+import org.example.oop_assignment_web_app.Entity.Car;
 
 public class FileHandler {
     static String directoryName = "C:/Files";
@@ -58,7 +60,25 @@ public class FileHandler {
             e.printStackTrace();
         }
     }
+    public static void fileWrite(LinkedList<Car> cars, String fileName) {   //for the cars part
+        String line = "";
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
+            for (Car car : cars) {
+                line = car.getId() + "," +
+                        car.getBrand() + "," +
+                        car.getModel() + "," +
+                        car.getPrice();
+                writer.write(line);
+                writer.newLine();
+            }
 
+
+
+
+        } catch (IOException e) {
+            System.out.println("Error saving cars: " + e.getMessage());
+        }
+    }
 
 
 }
