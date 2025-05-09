@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="org.example.oop_a.clss.CarManager" %>
-<%@ page import="org.example.oop_a.entity.Car" %>
+<%@ page import="org.example.oop_assignment_web_app.Control.CarManager" %>
+<%@ page import="org.example.oop_assignment_web_app.Entity.Car" %>
 <%@ page import="java.util.LinkedList" %>
 
 <%
