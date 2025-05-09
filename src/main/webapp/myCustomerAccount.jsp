@@ -1,13 +1,7 @@
 <%@ page import="org.example.oop_assignment_web_app.Entity.Customer" %>
 <%@ page import="org.example.oop_assignment_web_app.Control.CustomerManager" %>
 
-<%@ page contentType="text/html;charset=UTF-8"  %>
-<html>
-<head>
-    <title>Customer Account Edit</title>
-</head>
-<body>
-<h1>Customer Account Edit</h1>
+
 <%
     String auth = null;
 
@@ -34,10 +28,38 @@
 
 %>
 
+<%@ page contentType="text/html;charset=UTF-8"  %>
+<html>
+<head>
+    <link rel ="stylesheet" href ="CSS/bootstrap.min.css">
+    <title>Customer Account Edit</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .account-card {
+            max-width: 600px;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+<body>
 
-<p>Username: <%=name%></p>
-<p>Email: <%=email%></p>
 
+
+<div class="container">
+    <div class="card account-card shadow-sm">
+        <div class="card-header text-center bg-primary text-white">
+            <h1 class="mb-0">Customer Account Details</h1>
+        </div>
+        <div class="card-body">
+            <p><strong>Username:</strong> <%= name %></p>
+            <p><strong>Email:</strong> <%= email %></p>
+            <a class="btn btn-info" href="editCustomer.jsp" role="button">Edit Account Details</a>
+
+        </div>
+    </div>
+</div>
 
 
 

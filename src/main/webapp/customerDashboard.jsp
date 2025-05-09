@@ -10,6 +10,22 @@
 <head>
     <link rel ="stylesheet" href ="CSS/bootstrap.min.css">
     <title>Customer Dashboard</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .dashboard-header {
+            padding: 2rem 0;
+            text-align: center;
+        }
+        .dashboard-cards {
+            max-width: 1000px;
+            margin: auto;
+        }
+        .card {
+            min-height: 300px;
+        }
+    </style>
 </head>
 <body>
 <%
@@ -29,36 +45,52 @@
     }
 %>
 
-<h1>Customer Dashboard</h1>
+<nav class="navbar bg-body-tertiary">
+    <form action="logout" method="post" >
+        <a href="logout" class="btn btn-primary" style="position: absolute; top: 10px; right: 10px;">Log Out</a>
+    </form>
+</nav>
 
-<div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">Manage Bookings</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="booking.jsp" class="btn btn-primary">Book an inspection</a>
-    </div>
+<div class="container dashboard-header">
+    <h1>Customer Dashboard</h1>
+    <h2 class="display-5">Welcome to Your Dashboard</h2>
+    <p class="lead">Manage your account, browse available cars, and book inspections easily.</p>
 </div>
 
-<br>
+<div class="container dashboard-cards">
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100">
 
-<div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">View Cars</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="car-view.jsp" class="btn btn-primary">View now</a>
-    </div>
-</div>
+                <div class="card-body">
+                    <h5 class="card-title">Manage Bookings</h5>
+                    <p class="card-text">Schedule car inspections and manage your existing bookings.</p>
+                    <a href="booking.jsp" class="btn btn-primary">Book an inspection</a>
+                </div>
+            </div>
+        </div>
 
-<br>
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100">
 
-<div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">Edit Account</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="myCustomerAccount.jsp" class="btn btn-primary">Edit Account details</a>
+                <div class="card-body">
+                    <h5 class="card-title">View Cars</h5>
+                    <p class="card-text">Browse our collection of second-hand cars available for purchase.</p>
+                    <a href="cars.jsp" class="btn btn-primary">View now</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100">
+
+                <div class="card-body">
+                    <h5 class="card-title">Edit Account</h5>
+                    <p class="card-text">Update your personal information and change account settings.</p>
+                    <a href="myCustomerAccount.jsp" class="btn btn-primary">Edit Account details</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
