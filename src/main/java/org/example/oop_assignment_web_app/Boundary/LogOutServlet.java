@@ -8,7 +8,7 @@ import jakarta.servlet.http.*;
 import java.io.IOException;
 import java.io.Serial;
 
-@WebServlet("/logout")
+@WebServlet(name ="logOutServlet", value="/logout")
 public class LogOutServlet extends HttpServlet {
     @Serial
     private static final long serialVersionUID = 1L;
@@ -16,7 +16,7 @@ public class LogOutServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
 
-        //HttpSession session = request.getSession(false);
+
 
         Cookie[] cookies = request.getCookies();
         Cookie loginCookie = null;
@@ -34,7 +34,7 @@ public class LogOutServlet extends HttpServlet {
             response.addCookie(loginCookie);
         }
 
-        response.sendRedirect("sign-in.jsp");
+        response.sendRedirect("index.jsp");
 
     }
 }
