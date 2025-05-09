@@ -70,7 +70,7 @@
                 <div class="card-body">
                     <h5 class="card-title">View Cars</h5>
                     <p class="card-text">Browse our collection of second-hand cars available for purchase.</p>
-                    <a href="car-view.jsp" class="btn btn-primary">View now</a>
+                    <a href="cars.jsp" class="btn btn-primary">View now</a>
                 </div>
             </div>
         </div>
