@@ -1,12 +1,16 @@
 package org.example.oop_assignment_web_app.Control;
 
 import java.io.*;
+import java.util.LinkedList;
+import org.example.oop_assignment_web_app.Entity.Car;
+import org.example.oop_assignment_web_app.Entity.Transaction;
 
 public class FileHandler {
+    static String directoryName = "C:/Files";
 
     public static void createFile(String fileName) {
 
-        String directoryName = "C:/Files";
+
 
 
         File directory = new File(directoryName);
@@ -57,7 +61,45 @@ public class FileHandler {
             e.printStackTrace();
         }
     }
+    public static void fileWrite(LinkedList<Car> cars, String fileName) {   //for the cars part
+        String line = "";
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
+            for (Car car : cars) {
+                line = car.getId() + "," +
+                        car.getBrand() + "," +
+                        car.getModel() + "," +
+                        car.getPrice();
+                writer.write(line);
+                writer.newLine();
+            }
 
+
+
+
+        } catch (IOException e) {
+            System.out.println("Error saving cars: " + e.getMessage());
+        }
+    }
+    //for transactions
+    public static void fileWritetrans(LinkedList<Transaction> transactions, String fileName) {
+        String line = "";
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) { //changing append to false for testing
+            for (Transaction transaction :transactions) {
+                line = transaction.getTransactionId() + "," +
+                        transaction.getCarId() + "," +
+                        transaction.getPrice() + "," +
+                        transaction.getDate();
+                writer.write(line);
+                writer.newLine();
+            }
+
+
+
+
+        } catch (IOException e) {
+            System.out.println("Error saving transactions: " + e.getMessage());
+        }
+    }
 
 
 }

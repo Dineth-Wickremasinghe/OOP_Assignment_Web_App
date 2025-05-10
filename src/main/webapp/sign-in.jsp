@@ -12,7 +12,11 @@
     <link rel ="stylesheet" href ="CSS/bootstrap.min.css">
 </head>
 <body>
-<h2>Sign In</h2>
+<div class="container" >
+    <div class ="text-center">
+        <h1>Sign In</h1>
+    </div>
+
 <form method="post" action="Sign_in_Servlet">
     <div class="form-floating mb-3">
         <input type="text" class="form-control" id="floatingInput" name="username" placeholder="John Doe">
@@ -25,7 +29,10 @@
     </div>
 
     <button type="submit" class="btn btn-secondary">Submit</button>
-</form>
+    <br><br>
+    <a class="btn btn-info" href="register.jsp" role="button">Don't have an account</a>
 
+</form>
+</div>
 </body>
 </html>
