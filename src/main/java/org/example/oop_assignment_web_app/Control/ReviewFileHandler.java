@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import org.example.oop_assignment_web_app.Entity.Review;
 
 public class ReviewFileHandler {
-    private static final String DIRECTORY_NAME = "Files";
+    private static final String DIRECTORY_NAME = "C:/Files";
 
     public static void createFile(String fileName) {
         File directory = new File(DIRECTORY_NAME);
