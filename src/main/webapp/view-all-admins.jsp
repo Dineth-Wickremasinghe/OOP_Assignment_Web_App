@@ -15,6 +15,26 @@
     <link rel="stylesheet" type="text/css" href="../CSS/style.css">
 </head>
 <body>
+<%
+    String auth = null;
+    String type  = null;
+
+    Cookie[] cookies = request.getCookies();
+
+    if(cookies != null){
+        for(Cookie cookie : cookies){
+            if(cookie.getName().equals("auth")) {
+                auth = cookie.getValue();
+            }
+            if(cookie.getName().equals("type")){
+                type = cookie.getValue();
+            }
+        }
+    }
+    if(auth == null || !"Admin".equals(type)) {
+        response.sendRedirect("sign-in.jsp");
+    }
+%>
 <div class="container">
     <h1>All Admins</h1>
     <table border="1" cellspacing="0" cellpadding="10">

@@ -2,6 +2,7 @@ package org.example.oop_assignment_web_app.Boundary;
 
 
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -31,6 +32,15 @@ public class AddAdminServlet extends HttpServlet {
         try {
             adminManager.setAdmin(admin);
             adminManager.registerAdmin(admin);
+
+            Cookie loginCookie = new Cookie("auth", name);
+            loginCookie.setMaxAge(3600);
+            response.addCookie(loginCookie);
+
+            //user type cookie
+            Cookie loginCookie2 = new Cookie("type", "Admin");
+            loginCookie2.setMaxAge(3600);
+            response.addCookie(loginCookie2);
 
             response.sendRedirect("dashboard.jsp");
         }

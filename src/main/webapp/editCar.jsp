@@ -70,6 +70,26 @@
     </style>
 </head>
 <body class="container mt-4">
+<%
+    String auth = null;
+    String type  = null;
+
+    Cookie[] cookies = request.getCookies();
+
+    if(cookies != null){
+        for(Cookie cookie : cookies){
+            if(cookie.getName().equals("auth")) {
+                auth = cookie.getValue();
+            }
+            if(cookie.getName().equals("type")){
+                type = cookie.getValue();
+            }
+        }
+    }
+    if(auth == null || !"Admin".equals(type)) {
+        response.sendRedirect("login.jsp");
+    }
+%>
 <h2 class="bg-success p-2 text-white bg-opacity-75">EDIT CAR</h2>
 
 <% if (request.getParameter("error") != null) { %>

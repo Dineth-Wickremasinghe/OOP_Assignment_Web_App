@@ -26,6 +26,11 @@ public class Sign_in_Servlet extends HttpServlet {
             Cookie loginCookie = new Cookie("auth", username);
             loginCookie.setMaxAge(3600);
             response.addCookie(loginCookie);
+
+            Cookie loginCookie2 = new Cookie("type", "Customer");
+            loginCookie2.setMaxAge(3600);
+            response.addCookie(loginCookie2);
+
             response.sendRedirect("customerDashboard.jsp");
 
         }

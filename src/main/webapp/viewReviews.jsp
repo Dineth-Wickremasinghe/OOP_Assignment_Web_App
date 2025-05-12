@@ -62,6 +62,27 @@
   </style>
 </head>
 <body>
+  <%
+    String auth = null;
+    String type  = null;
+
+    Cookie[] cookies = request.getCookies();
+
+    if(cookies != null){
+        for(Cookie cookie : cookies){
+            if(cookie.getName().equals("auth")) {
+                auth = cookie.getValue();
+            }
+            if(cookie.getName().equals("type")){
+                type = cookie.getValue();
+            }
+        }
+    }
+    if(auth == null) {
+
+        response.sendRedirect("sign-in.jsp");
+    }
+%>
 <h1>Reviews for Car ID: <%= request.getParameter("carId") %></h1>
 
 <div class="reviews-container">
