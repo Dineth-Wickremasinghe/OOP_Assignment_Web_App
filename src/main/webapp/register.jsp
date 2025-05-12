@@ -12,7 +12,12 @@
     <link rel ="stylesheet" href ="CSS/bootstrap.min.css">
     <title>Add Customer</title>
 </head>
-<body >
+<body>
+<div class="container">
+    <div class="text-center">
+        <h1> Register as a Customer</h1>
+    </div>
+
 <form method="post" action="AddCustomerServlet">
     <div class="form-floating mb-3">
         <input type="email" class="form-control" id="floatingInput" name="email" placeholder="name@example.com">
@@ -29,7 +34,11 @@
         <label for="floatingPassword">Password</label>
     </div>
 
-    <button type="submit" class="btn btn-secondary">Submit</button> <!-- Fixed button type -->
+    <button type="submit" class="btn btn-secondary">Submit</button>
+    <br><br>
+
+    <a class="btn btn-info" href="sign-in.jsp" role="button">Already have an account</a>
 </form>
+</div>
 </body>
 </html>

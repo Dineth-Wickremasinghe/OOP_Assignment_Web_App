@@ -18,6 +18,9 @@ public class Sign_in_Servlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
+
+
+
         CustomerManager cm = new CustomerManager();
         if (cm.auth(username, password)){
             Cookie loginCookie = new Cookie("auth", username);

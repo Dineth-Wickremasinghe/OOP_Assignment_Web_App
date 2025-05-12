@@ -1,9 +1,11 @@
 package org.example.oop_assignment_web_app.Entity;
 
 public class User {
+
     protected String name;
     protected String email;
     protected String password;
+
 
 
     public User(){
