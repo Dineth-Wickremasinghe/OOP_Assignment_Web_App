@@ -69,7 +69,13 @@
                 <div class="card-body">
                     <h5 class="card-title">Manage Bookings</h5>
                     <p class="card-text">Schedule car inspections and manage your existing bookings.</p>
-                    <a href="booking.jsp" class="btn btn-primary">Book an inspection</a>
+                    <form action="BookingServlet" method="get">
+                        <input type="hidden" name="action" value="view">
+                        <input type="hidden" name="userId" value="<%= auth %>">
+
+                        <button class="btn btn-primary" type="submit">View My Bookings</button>
+                    </form>
+
                 </div>
             </div>
         </div>

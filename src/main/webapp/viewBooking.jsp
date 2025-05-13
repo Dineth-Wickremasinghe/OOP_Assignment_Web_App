@@ -1,10 +1,35 @@
+<%
+    String auth = null;
+    String type  = null;
+
+    Cookie[] cookies = request.getCookies();
+
+    if(cookies != null){
+        for(Cookie cookie : cookies){
+            if(cookie.getName().equals("auth")) {
+                auth = cookie.getValue();
+            }
+            if(cookie.getName().equals("type")){
+                type = cookie.getValue();
+            }
+        }
+    }
+    if(auth == null ) {  //both customers and admins can view
+        response.sendRedirect("sign-in.jsp");
+    }
+
+%>
+
+
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="org.example.oop_assignment_web_app.Entity.Booking" %>
 <%@ page import="java.util.List" %>
+<%@ page import="org.example.oop_assignment_web_app.Entity.Admin" %>
 <html>
 <head>
     <title>My Bookings - Prime Wheels</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+    <link rel="stylesheet" href="CSS/styleBooking.css">
     <script>
         function confirmDelete() {
             return confirm("Are you sure you want to delete this booking?");
@@ -39,7 +64,7 @@
         if (bookings != null) {
             for (Booking booking : bookings) {
     %>
-    <% if (booking.getUserId().equals(request.getParameter("userId"))){ %>
+    <% if (booking.getUserId().equals(request.getParameter("userId")) || type.equals("Admin")){ %>
     <tr>
         <td><%= booking.getUserId() %></td>
         <td><%= booking.getCarId() %></td>
@@ -54,6 +79,7 @@
     }
     %>
 </table>
-<a href="bookingPage.jsp?userId=<%= request.getParameter("userId") %>"> Back </a>
+<br>
+<a href="cars.jsp"> Back </a>
 </body>
 </html>

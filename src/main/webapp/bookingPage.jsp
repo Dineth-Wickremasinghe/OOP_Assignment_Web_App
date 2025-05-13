@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Book a Car - Prime Wheels</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+    <link rel="stylesheet" href="/CSS/styleBooking.css">
     <script>
         function validateDate() {
             const dateInput = document.getElementById("date").value;
@@ -22,6 +22,28 @@
     </script>
 </head>
 <body>
+<%
+    String auth = null;
+    String type  = null;
+
+
+    Cookie[] cookies = request.getCookies();
+
+    if(cookies != null){
+        for(Cookie cookie : cookies){
+            if(cookie.getName().equals("auth")) {
+                auth = cookie.getValue();
+
+            }
+            if(cookie.getName().equals("type")){
+                type = cookie.getValue();
+            }
+        }
+    }
+    if(auth == null || !"Customer".equals(type)) {
+        response.sendRedirect("sign-in.jsp");
+    }
+%>
 <h1>Book a Car</h1>
 <% if (request.getAttribute("error") != null) { %>
 <p style="color: red;"><%= request.getAttribute("error") %></p>
@@ -29,7 +51,7 @@
 <form action="BookingServlet" method="post" onsubmit="return validateDate()">
     <input type="hidden" name="action" value="create">
     <!-- User ID from carList.jsp or previous page -->
-    <input type="hidden" name="userId" value="<%= request.getParameter("userId") %>">
+    <input type="hidden" name="userId" value="<%=auth%>">
     <!-- Car details from carList.jsp, validated by BookingServlet using CarManager -->
     <input type="hidden" name="carId" value="<%= request.getParameter("carId") %>">
     <input type="hidden" name="brand" value="<%= request.getParameter("brand") %>">
@@ -39,18 +61,15 @@
     <button type="submit">Book Now</button>
 
 
-    <p>User ID: <%= request.getParameter("userId") %></p>
-    <p>Car ID: <%= request.getParameter("carId") %></p>
-    <p>Brand: <%= request.getParameter("brand") %></p>
-    <p>Model: <%= request.getParameter("model") %></p>
+<p ><strong> Note that the shop will be open only from 9 a.m. - 5 p.m. on working days</strong></p>
 
 </form>
 <form action="BookingServlet" method="get">
     <input type="hidden" name="action" value="view">
-    <input type="hidden" name="userId" value="<%= request.getParameter("userId") %>">
+    <input type="hidden" name="userId" value="<%= auth %>">
     <button type="submit">View My Booking</button>
 </form>
-<!-- Link to carList.jsp for selecting a different car -->
-<a href="CarServlet?action=list&userId=<%= request.getParameter("userId") %>">Back to Car List</a>
+
+<a href="cars.jsp">Back to Car List</a>
 </body>
 </html>

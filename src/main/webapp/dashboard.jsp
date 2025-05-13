@@ -10,7 +10,7 @@
 <html>
 <head>
     <title>Admin Dashboard</title>
-    <link rel="stylesheet" type="text/css" href="../CSS/style.css">
+    <link rel="stylesheet" type="text/css" href="CSS/style.css">
 </head>
 <body>
 <%
@@ -37,13 +37,38 @@
     <h1>Admin Dashboard</h1>
 </header>
 <div class="container">
-    <button onclick="location.href='create-admin.jsp'">Create Admin</button>
-    <button onclick="location.href='update-admin.jsp'">Update Admin</button>
-    <button onclick="location.href='ViewAdminServlet'">View All Admins</button>
-    <button onclick="location.href='delete-admin.jsp'">Delete Admin</button>
-    <button onclick="location.href='transaction-view.jsp'">View Transactions</button>
-    <button onclick="location.href='view-bookings.jsp'">View Bookings</button>
-    <button onclick="location.href='login.jsp'">Logout</button>
+    <div>
+        <button onclick="location.href='create-admin.jsp'">Create Admin</button>
+    </div>
+    <div>
+        <button onclick="location.href='update-admin.jsp'">Update Admin</button>
+    </div>
+    <div>
+        <button onclick="location.href='ViewAdminServlet'">View All Admins</button>
+    </div>
+    <div>
+        <button onclick="location.href='delete-admin.jsp'">Delete Admin</button>
+    </div>
+    <div>
+        <button onclick="location.href='transaction-view.jsp'">View Transactions</button>
+    </div>
+    <div>
+        <button onclick="location.href='cars.jsp'">View Cars</button>
+    </div>
+    <div>
+        <form action="BookingServlet" method="get"><input type="hidden" name="action" value="viewAll"><button type="submit">View Bookings</button></form>
+    </div>
+    <div>
+        <button onclick="location.href='login.jsp'">Logout</button>
+    </div>
+
+
+
+
+
+
+
+
 </div>
 </body>
 </html>
