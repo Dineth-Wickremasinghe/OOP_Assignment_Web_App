@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Book a Car - Prime Wheels</title>
-    <link rel="stylesheet" href="/CSS/styleBooking.css">
+    <link rel="stylesheet" href="CSS/styleBooking.css">
     <script>
         function validateDate() {
             const dateInput = document.getElementById("date").value;

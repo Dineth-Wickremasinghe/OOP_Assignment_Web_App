@@ -25,7 +25,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="org.example.oop_assignment_web_app.Entity.Booking" %>
 <%@ page import="java.util.List" %>
-<%@ page import="org.example.oop_assignment_web_app.Entity.Admin" %>
+
 <html>
 <head>
     <title>My Bookings - Prime Wheels</title>

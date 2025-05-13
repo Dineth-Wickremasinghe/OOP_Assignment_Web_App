@@ -20,7 +20,7 @@ public class BookingServlet extends HttpServlet {
     private org.example.oop_assignment_web_app.Control.CarManager carManager;
 
     @Override
-    public void init() throws ServletException {
+    public void init()  {
         // Initialize BookingFileHandler for bookings.txt
         String bookingFilePath = "C:/Files/bookings.txt";
         bookingFileHandler = new org.example.oop_assignment_web_app.Control.BookingFileHandler(bookingFilePath);
