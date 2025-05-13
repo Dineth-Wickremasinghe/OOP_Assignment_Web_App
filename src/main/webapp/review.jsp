@@ -119,6 +119,26 @@
     </style>
 </head>
 <body>
+<%
+    String auth = null;
+    String type  = null;
+
+    Cookie[] cookies = request.getCookies();
+
+    if(cookies != null){
+        for(Cookie cookie : cookies){
+            if(cookie.getName().equals("auth")) {
+                auth = cookie.getValue();
+            }
+            if(cookie.getName().equals("type")){
+                type = cookie.getValue();
+            }
+        }
+    }
+    if(auth == null) {
+        response.sendRedirect("sign-in.jsp");
+    }
+%>
 <h1>Car Review System</h1>
 
 <div class="container">

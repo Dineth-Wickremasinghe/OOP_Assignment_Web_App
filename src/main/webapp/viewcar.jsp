@@ -4,6 +4,25 @@
 <%@ page import="java.util.LinkedList" %>
 
 <%
+    String auth = null;
+    String type  = null;
+
+    Cookie[] cookies = request.getCookies();
+
+    if(cookies != null){
+        for(Cookie cookie : cookies){
+            if(cookie.getName().equals("auth")) {
+                auth = cookie.getValue();
+            }
+            if(cookie.getName().equals("type")){
+                type = cookie.getValue();
+            }
+        }
+    }
+    if(auth == null ) {
+        response.sendRedirect("sign-in.jsp");
+    }
+
     String carID = request.getParameter("carID");
     CarManager cm = new CarManager();
     cm.loadCars();
@@ -72,8 +91,13 @@
 
     <div class="btn-group">
         <a href="cars.jsp" class="btn btn-secondary">Back to Car List</a>
+        <% if("Admin".equals(type)) { %>
         <a href="editCar.jsp?carID=<%= selectedCar.getId() %>" class="btn btn-warning">Edit Car</a>
-        <a href="deleteCar.jsp?carID=<%= selectedCar.getId() %>" class="btn btn-danger">Delete Car</a>
+
+             <a href="deleteCar.jsp?carID=<%= selectedCar.getId() %>" class="btn btn-danger">Delete Car</a>
+        <% }%>
+
+
         <a href="review.jsp?carId=<%=selectedCar.getId()%>" class="btn btn-primary">Reviews</a>
     </div>
 </div>
