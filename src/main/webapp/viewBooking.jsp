@@ -46,7 +46,15 @@
     </script>
 </head>
 <body>
+<% if ("Admin".equals(type)) {
+ %>
+
+<h1>All Bookings</h1>
+<% } else{
+%>
+
 <h1>My Bookings</h1>
+<% }%>
 <% if (request.getAttribute("error") != null) { %>
 <p style="color: red;"><%= request.getAttribute("error") %></p>
 <% } %>

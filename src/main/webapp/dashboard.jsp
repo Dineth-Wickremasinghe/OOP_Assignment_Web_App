@@ -1,16 +1,9 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: ishaak
-  Date: 5/6/2025
-  Time: 3:57 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Admin Dashboard</title>
-    <link rel="stylesheet" type="text/css" href="CSS/style.css">
+    <link rel="stylesheet" type="text/css" href="CSS/ADstyle.css">
 </head>
 <body>
 <%
@@ -37,38 +30,39 @@
     <h1>Admin Dashboard</h1>
 </header>
 <div class="container">
-    <div>
-        <button onclick="location.href='create-admin.jsp'">Create Admin</button>
+    <div class="row">
+        <div class="button-container">
+            <button onclick="location.href='create-admin.jsp'">Create Admin</button>
+        </div>
+        <div class="button-container">
+            <button onclick="location.href='update-admin.jsp'">Update Admin</button>
+        </div>
+        <div class="button-container">
+            <button onclick="location.href='ViewAdminServlet'">View All Admins</button>
+        </div>
     </div>
-    <div>
-        <button onclick="location.href='update-admin.jsp'">Update Admin</button>
-    </div>
-    <div>
-        <button onclick="location.href='ViewAdminServlet'">View All Admins</button>
-    </div>
-    <div>
-        <button onclick="location.href='delete-admin.jsp'">Delete Admin</button>
-    </div>
-    <div>
-        <button onclick="location.href='transaction-view.jsp'">View Transactions</button>
-    </div>
-    <div>
+    <div class="row">
+        <div class="button-container">
+            <button onclick="location.href='delete-admin.jsp'">Delete Admin</button>
+        </div>
+        <div class="button-container">
+            <button onclick="location.href='transaction-view.jsp'">View Transactions</button>
+        </div>
+        <div class="button-container">
+            <form action="BookingServlet" method="get">
+                <input type="hidden" name="action" value="viewAll">
+                <button type="submit">View Bookings</button>
+            </form>
+        </div>
+    <div class="button-container">
         <button onclick="location.href='cars.jsp'">View Cars</button>
     </div>
-    <div>
-        <form action="BookingServlet" method="get"><input type="hidden" name="action" value="viewAll"><button type="submit">View Bookings</button></form>
     </div>
-    <div>
-        <button onclick="location.href='login.jsp'">Logout</button>
+    <div class="logout-row">
+        <div class="logout-container">
+            <button class="logout" onclick="location.href='logout'">Logout</button>
+        </div>
     </div>
-
-
-
-
-
-
-
-
 </div>
 </body>
 </html>
