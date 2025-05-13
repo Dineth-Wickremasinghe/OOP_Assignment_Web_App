@@ -6,50 +6,43 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.oop_assignment_web_app.Control.CustomerManager;
-import org.example.oop_assignment_web_app.Entity.Customer;
-
+import org.example.oop_assignment_web_app.Control.AdminManager;
+import org.example.oop_assignment_web_app.Entity.Admin;
 import java.io.IOException;
 
 
-@WebServlet(name = "AddCustomerServlet", value = "/AddCustomerServlet")
-public class AddCustomerServlet extends HttpServlet {
-    private CustomerManager customerManager;
+@WebServlet(name = "AddAdminServlet", value = "/AddAdminServlet")
+public class AddAdminServlet extends HttpServlet {
+    private AdminManager adminManager;
 
     @Override
     public void init() {
 
-        customerManager = new CustomerManager();
+        adminManager = new AdminManager();
     }
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         String email = request.getParameter("email");
-        String username = request.getParameter("name");
+        String name = request.getParameter("name");
         String password = request.getParameter("password");
 
+        response.getWriter().println(email + " " + name + " " + password);
 
-
-        Customer customer = new Customer(username, email, password); // Create Customer object
+        Admin admin = new Admin(name, email, password); // Create Customer object
         try {
-            customerManager.setCustomer(customer);
-            customerManager.registerCustomer(customer);
+            adminManager.setAdmin(admin);
+            adminManager.registerAdmin(admin);
 
-            //automatic signing in
-
-            Cookie loginCookie = new Cookie("auth", username);
+            Cookie loginCookie = new Cookie("auth", name);
             loginCookie.setMaxAge(3600);
             response.addCookie(loginCookie);
 
-
-
             //user type cookie
-            Cookie loginCookie2 = new Cookie("type", customer.getType());
+            Cookie loginCookie2 = new Cookie("type", "Admin");
             loginCookie2.setMaxAge(3600);
             response.addCookie(loginCookie2);
 
-            response.sendRedirect("customerDashboard.jsp");
-
+            response.sendRedirect("dashboard.jsp");
         }
         catch (Exception e) {
             System.out.println(e.getMessage());

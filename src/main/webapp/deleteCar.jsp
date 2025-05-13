@@ -12,6 +12,26 @@
     <title>Delete Car</title>
     <style>
         body {
+        <%
+String auth = null;
+String type  = null;
+
+Cookie[] cookies = request.getCookies();
+
+if(cookies != null){
+    for(Cookie cookie : cookies){
+        if(cookie.getName().equals("auth")) {
+            auth = cookie.getValue();
+        }
+        if(cookie.getName().equals("type")){
+            type = cookie.getValue();
+        }
+    }
+}
+if(auth == null || !"Admin".equals(type)) {
+    response.sendRedirect("login.jsp");
+}
+%>
             background-color: #f4f6f9;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }

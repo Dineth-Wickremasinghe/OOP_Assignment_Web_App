@@ -11,6 +11,25 @@
 <%@ page import="java.util.LinkedList" %>
 
 <%
+  String auth = null;
+  String type  = null;
+
+  Cookie[] cookies = request.getCookies();
+
+  if(cookies != null){
+    for(Cookie cookie : cookies){
+      if(cookie.getName().equals("auth")) {
+        auth = cookie.getValue();
+      }
+      if(cookie.getName().equals("type")){
+        type = cookie.getValue();
+      }
+    }
+  }
+  if(auth == null || !"Customer".equals(type)) {
+    response.sendRedirect("sign-in.jsp");
+  }
+
   String carID = request.getParameter("carID");
   CarManager cm = new CarManager();
   cm.loadCars();

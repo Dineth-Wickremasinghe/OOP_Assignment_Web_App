@@ -30,6 +30,7 @@
 <body>
 <%
     String auth = null;
+    String type  = null;
 
     Cookie[] cookies = request.getCookies();
 
@@ -38,9 +39,12 @@
             if(cookie.getName().equals("auth")) {
                 auth = cookie.getValue();
             }
+            if(cookie.getName().equals("type")){
+                type = cookie.getValue();
+            }
         }
     }
-    if(auth == null) {
+    if(auth == null || !"Customer".equals(type)) {
         response.sendRedirect("sign-in.jsp");
     }
 %>
