@@ -20,11 +20,16 @@ public class LogOutServlet extends HttpServlet {
 
         Cookie[] cookies = request.getCookies();
         Cookie loginCookie = null;
+        Cookie type = null;
 
         if(cookies != null){
             for(Cookie cookie : cookies){
                 if(cookie.getName().equals("auth")) {
                     loginCookie = cookie;
+                }
+
+                if(cookie.getName().equals("type")){
+                    type = cookie;
                 }
             }
         }
@@ -32,6 +37,10 @@ public class LogOutServlet extends HttpServlet {
         if(loginCookie != null){
             loginCookie.setMaxAge(0);
             response.addCookie(loginCookie);
+        }
+        if(type != null){
+            type.setMaxAge(0);
+            response.addCookie(type);
         }
 
         response.sendRedirect("index.jsp");

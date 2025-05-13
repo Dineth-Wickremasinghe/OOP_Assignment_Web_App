@@ -97,8 +97,20 @@
       <p><strong>Price:</strong> $<%= car.getPrice() %></p>
     </div>
     <div class="action-buttons">
-      <a class="btn btn-info btn-sm" href="viewcar.jsp?carID=<%= car.getId() %>">View</a>
-      <a class="btn btn-danger btn-sm" href="BookingCar.jsp?carID=<%= car.getId() %>">Create Booking</a>
+
+        <a class="btn btn-info btn-sm" href="viewcar.jsp?carID=<%= car.getId() %>">View</a><br><br>
+        <form action="bookingPage.jsp" method="post">
+          <input type=  "hidden" name="carId" value="<%= car.getId() %>">
+          <input type = "hidden" name="userId" value="<%= request.getAttribute("userId") %>">
+          <input type = "hidden" name="brand" value="<%= car.getBrand() %>">
+          <input type = "hidden" name="model" value="<%= car.getModel() %>">
+
+          <button type="submit" class="btn btn-success">Create Booking</button>
+        </form>
+
+
+
+
     </div>
   </div>
   <%
