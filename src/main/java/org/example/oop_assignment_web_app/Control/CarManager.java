@@ -1,12 +1,9 @@
 package org.example.oop_assignment_web_app.Control;
 
 import org.example.oop_assignment_web_app.Entity.Car;
-import java.util.LinkedList;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.util.LinkedList;
 
 public class CarManager {
     private static final String FILE_PATH = "C:/Files/cars.txt";
@@ -40,7 +37,7 @@ public class CarManager {
                 }
             }
         } catch (IOException e) {
-            System.out.println("Error loading bookings: " + e.getMessage());
+            System.out.println("Error loading cars: " + e.getMessage());
         }
         return cars;
     }
@@ -109,16 +106,31 @@ public class CarManager {
         return false;
     }
 
-    public boolean deleteCar(String id) {
-        Car car = getCarById(id);
-        if (car != null) {
-            boolean result = cars.remove(car);
-            if (result) {
-                FileHandler.fileWrite(cars, FILE_PATH);
+
+    public boolean deleteCar(String username) {
+        File file = new File(FILE_PATH);
+        File tempFile = new File(FILE_PATH + ".tmp");
+
+        try (BufferedReader br = new BufferedReader(new FileReader(file));
+             PrintWriter pw = new PrintWriter(new FileWriter(tempFile))) {
+
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(",");
+                if (!parts[0].equals(username)) {
+                    pw.println(line);
+                }
             }
-            return result;
         }
-        return false;
+        catch (IOException e) {
+            System.out.println("Error deleting file!");
+            return false;
+        }
+
+        file.delete();
+        tempFile.renameTo(file);
+        return true;
+
     }
 
 

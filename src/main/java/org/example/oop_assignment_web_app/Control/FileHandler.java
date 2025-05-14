@@ -10,9 +10,6 @@ public class FileHandler {
 
     public static void createFile(String fileName) {
 
-
-
-
         File directory = new File(directoryName);
 
         // Check if the directory does not exist
@@ -61,7 +58,7 @@ public class FileHandler {
             e.printStackTrace();
         }
     }
-    public static void fileWrite(LinkedList<Car> cars, String fileName) {   //for the cars part
+    public static void fileWrite(LinkedList<Car> cars, String fileName) {   //for adding cars part
         String line = "";
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
             for (Car car : cars) {
@@ -80,6 +77,8 @@ public class FileHandler {
             System.out.println("Error saving cars: " + e.getMessage());
         }
     }
+
+
     //for transactions
     public static void fileWritetrans(LinkedList<Transaction> transactions, String fileName) {
         String line = "";
