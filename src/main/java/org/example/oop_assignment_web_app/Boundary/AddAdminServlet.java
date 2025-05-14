@@ -28,7 +28,7 @@ public class AddAdminServlet extends HttpServlet {
 
         response.getWriter().println(email + " " + name + " " + password);
 
-        Admin admin = new Admin(name, email, password); // Create Customer object
+        Admin admin = new Admin(name, email, password); // Create Admin object
         try {
             adminManager.setAdmin(admin);
             adminManager.registerAdmin(admin);
@@ -38,7 +38,7 @@ public class AddAdminServlet extends HttpServlet {
             response.addCookie(loginCookie);
 
             //user type cookie
-            Cookie loginCookie2 = new Cookie("type", "Admin");
+            Cookie loginCookie2 = new Cookie("type", admin.displayType());
             loginCookie2.setMaxAge(3600);
             response.addCookie(loginCookie2);
 

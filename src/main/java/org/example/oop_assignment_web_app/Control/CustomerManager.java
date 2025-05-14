@@ -9,6 +9,7 @@ public class CustomerManager {
     Customer customer;
 
 
+
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
@@ -23,7 +24,7 @@ public class CustomerManager {
         try {
             String hashedPassword = PasswordUtil.hashPassword(c.getPassword());
 
-            String line = String.join(",", c.getName(), c.getEmail(), hashedPassword, c.getType());
+            String line = String.join(",", c.getName(), c.getEmail(), hashedPassword, c.displayType());
             try{
                 FileHandler.createFile(CUSTOMER_FILE);
 
@@ -98,7 +99,7 @@ public class CustomerManager {
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(",");
                 if (parts[0].equals(c.getName())) {
-                    String text = String.join(",", c.getName(), c.getEmail(), hashedPassword, c.getType());
+                    String text = String.join(",", c.getName(), c.getEmail(), hashedPassword, c.displayType());
                     pw.println(text);
                 } else {
                     pw.println(line);

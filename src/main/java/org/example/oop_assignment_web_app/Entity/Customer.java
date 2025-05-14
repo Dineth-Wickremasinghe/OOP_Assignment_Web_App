@@ -1,6 +1,6 @@
 package org.example.oop_assignment_web_app.Entity;
 
-public class Customer extends User {
+public class Customer extends User { //Inheritance
     String type = "Customer";
 
     public Customer(){
@@ -11,9 +11,12 @@ public class Customer extends User {
 
     }
 
-    public String getType() {
+    //Polymorphism
+    public String displayType() {
         return type;
     }
+
+
     public String getEmail() {
         return super.getEmail();
     }

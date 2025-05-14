@@ -26,7 +26,7 @@ public class AdminManager {
         try {
             String hashedPassword = PasswordUtil.hashPassword(a.getPassword());
 
-            String line = String.join(",", a.getName(), a.getEmail(), hashedPassword, a.getType());
+            String line = String.join(",", a.getName(), a.getEmail(), hashedPassword, a.displayType());
             try {
                 FileHandler.createFile(ADMIN_FILE);
 
@@ -105,7 +105,7 @@ public class AdminManager {
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(",");
                 if (parts[0].equals(a.getName())) {
-                    String text = String.join(",", a.getName(), a.getEmail(), hashedPassword, a.getType());
+                    String text = String.join(",", a.getName(), a.getEmail(), hashedPassword, a.displayType());
                     pw.println(text);
                 } else {
                     pw.println(line);

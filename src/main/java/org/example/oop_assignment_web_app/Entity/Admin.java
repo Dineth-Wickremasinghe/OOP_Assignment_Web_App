@@ -12,7 +12,7 @@ public class Admin extends User {
 
     }
 
-    public String getType() {
+    public String displayType() { //Polymorphism
 
         return type;
     }

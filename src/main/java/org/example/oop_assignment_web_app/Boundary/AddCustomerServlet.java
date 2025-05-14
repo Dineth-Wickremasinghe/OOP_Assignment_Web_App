@@ -44,7 +44,7 @@ public class AddCustomerServlet extends HttpServlet {
 
 
             //user type cookie
-            Cookie loginCookie2 = new Cookie("type", customer.getType());
+            Cookie loginCookie2 = new Cookie("type", customer.displayType());
             loginCookie2.setMaxAge(3600);
             response.addCookie(loginCookie2);
 
