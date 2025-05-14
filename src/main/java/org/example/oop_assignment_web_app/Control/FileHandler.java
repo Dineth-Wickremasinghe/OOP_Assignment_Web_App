@@ -3,6 +3,7 @@ package org.example.oop_assignment_web_app.Control;
 import java.io.*;
 import java.util.LinkedList;
 import org.example.oop_assignment_web_app.Entity.Car;
+import org.example.oop_assignment_web_app.Entity.Transaction;
 
 public class FileHandler {
     static String directoryName = "C:/Files";
@@ -77,6 +78,26 @@ public class FileHandler {
 
         } catch (IOException e) {
             System.out.println("Error saving cars: " + e.getMessage());
+        }
+    }
+    //for transactions
+    public static void fileWritetrans(LinkedList<Transaction> transactions, String fileName) {
+        String line = "";
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) { //changing append to false for testing
+            for (Transaction transaction :transactions) {
+                line = transaction.getTransactionId() + "," +
+                        transaction.getCarId() + "," +
+                        transaction.getPrice() + "," +
+                        transaction.getDate();
+                writer.write(line);
+                writer.newLine();
+            }
+
+
+
+
+        } catch (IOException e) {
+            System.out.println("Error saving transactions: " + e.getMessage());
         }
     }
 

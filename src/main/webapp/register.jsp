@@ -26,7 +26,7 @@
 
     <div class="form-floating mb-3">
         <input type="text" class="form-control" id="floatingName" name="name" placeholder="John Smith">
-        <label for="floatingName">Name</label> <!-- Fixed 'for' attribute -->
+        <label for="floatingName">Name</label>
     </div>
 
     <div class="form-floating mb-3">

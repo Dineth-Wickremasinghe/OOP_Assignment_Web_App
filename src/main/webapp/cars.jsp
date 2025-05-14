@@ -3,6 +3,25 @@
 <%@ page import="org.example.oop_assignment_web_app.Entity.Car" %>
 <%@ page import="java.util.LinkedList" %>
 <%
+  String auth = null;
+  String type  = null;
+
+  Cookie[] cookies = request.getCookies();
+
+  if(cookies != null){
+    for(Cookie cookie : cookies){
+      if(cookie.getName().equals("auth")) {
+        auth = cookie.getValue();
+      }
+      if(cookie.getName().equals("type")){
+        type = cookie.getValue();
+      }
+    }
+  }
+  if(auth == null ) {  //both customers and admins can view
+    response.sendRedirect("sign-in.jsp");
+  }
+
   CarManager cm = new CarManager();
   LinkedList<Car> cars = cm.loadCars();
 %>
@@ -78,16 +97,30 @@
       <p><strong>Price:</strong> $<%= car.getPrice() %></p>
     </div>
     <div class="action-buttons">
-      <a class="btn btn-info btn-sm" href="viewcar.jsp?carID=<%= car.getId() %>">View</a>
-      <a class="btn btn-danger btn-sm" href="BookingCar.jsp?carID=<%= car.getId() %>">Create Booking</a>
+
+        <a class="btn btn-info btn-sm" href="viewcar.jsp?carID=<%= car.getId() %>">View</a><br><br>
+        <form action="bookingPage.jsp" method="post">
+          <input type=  "hidden" name="carId" value="<%= car.getId() %>">
+          <input type = "hidden" name="userId" value="<%= request.getAttribute("userId") %>">
+          <input type = "hidden" name="brand" value="<%= car.getBrand() %>">
+          <input type = "hidden" name="model" value="<%= car.getModel() %>">
+
+          <button type="submit" class="btn btn-success">Create Booking</button>
+        </form>
+
+
+
+
     </div>
   </div>
   <%
     }
   %>
 </div>
-
+<% if("Admin".equals(type)) { %>
 <a href="addcar.jsp" class="btn btn-primary add-button">Add New Car</a>
+<% }%>
+
 </body>
 </html>
 
