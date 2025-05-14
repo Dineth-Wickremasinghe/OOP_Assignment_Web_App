@@ -94,7 +94,7 @@
         <% if("Admin".equals(type)) { %>
         <a href="editCar.jsp?carID=<%= selectedCar.getId() %>" class="btn btn-warning">Edit Car</a>
 
-             <a href="deleteCar.jsp?carID=<%= selectedCar.getId() %>" class="btn btn-danger">Delete Car</a>
+        <a href="deleteCar.jsp?carID=<%= selectedCar.getId() %>" class="btn btn-danger">Delete Car</a>
         <% }%>
 
 

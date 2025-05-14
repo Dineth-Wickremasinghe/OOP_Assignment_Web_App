@@ -29,10 +29,10 @@ public class DeletecarServlet extends HttpServlet {
             if (success) {
                 response.sendRedirect("cars.jsp");
             } else {
-                response.sendRedirect("deletecar.jsp?carID=" + id + "&error=Car not found");
+                response.sendRedirect("deleteCar.jsp?carID=" + id + "&error=Car not found");
             }
         } catch (Exception e) {
-            response.sendRedirect("deletecar.jsp?error=" + e.getMessage());
+            response.sendRedirect("deleteCar.jsp?error=" + e.getMessage());
         }
     }
 }
