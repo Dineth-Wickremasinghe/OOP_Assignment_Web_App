@@ -8,11 +8,7 @@ public class MergeSort {
     public static Car[] mergeSort(Car[] cars) {
 
        //make linked list into array:
-
-
-
         DArray array = new DArray(cars.length);
-
         // Insert all cars into the DArray
         for (Car car : cars) {
             array.insert(car);
@@ -29,27 +25,27 @@ public class MergeSort {
 
 class DArray {
     private final Car[] theArray;
-    private int nElems;
+    private int nElements;
 
     public DArray(int max) {
         theArray = new Car[max];
-        nElems = 0;
+        nElements = 0;
     }
 
     public void insert(Car car) {
-        theArray[nElems++] = car;
+        theArray[nElements++] = car;
     }
 
     public void print() {
-        for (int i = 0; i < nElems; i++) {
+        for (int i = 0; i < nElements; i++) {
             System.out.print(theArray[i] + " ");
         }
         System.out.println();
     }
 
     public void mergeSort() {
-        Car[] workSpace = new Car[nElems];
-        recMergeSort(workSpace, 0, nElems - 1);
+        Car[] workSpace = new Car[nElements];
+        recMergeSort(workSpace, 0, nElements - 1);
     }
 
     private void recMergeSort(Car[] workSpace, int lowerBound, int upperBound) {
@@ -92,8 +88,8 @@ class DArray {
 
     // Getter for sorted array
     public Car[] getArray() {
-        Car[] result = new Car[nElems];
-        System.arraycopy(theArray, 0, result, 0, nElems);
+        Car[] result = new Car[nElements];
+        System.arraycopy(theArray, 0, result, 0, nElements);
         return result;
     }
 }
