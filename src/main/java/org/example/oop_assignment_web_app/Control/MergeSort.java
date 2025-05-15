@@ -2,7 +2,7 @@ package org.example.oop_assignment_web_app.Control;
 
 import org.example.oop_assignment_web_app.Entity.Car;
 
-import java.util.LinkedList;
+
 
 public class MergeSort {
     public static Car[] mergeSort(Car[] cars) {
@@ -28,7 +28,7 @@ public class MergeSort {
 }
 
 class DArray {
-    private Car[] theArray;
+    private final Car[] theArray;
     private int nElems;
 
     public DArray(int max) {

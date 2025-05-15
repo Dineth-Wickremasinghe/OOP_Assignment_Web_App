@@ -3,6 +3,7 @@ package org.example.oop_assignment_web_app.Control;
 import org.example.oop_assignment_web_app.Entity.Car;
 
 import java.io.*;
+import java.util.Collections;
 import java.util.LinkedList;
 
 public class CarManager {
@@ -55,21 +56,13 @@ public class CarManager {
         Car[] carsSortedArr = MergeSort.mergeSort(carArray);
 
         //Convert sorted carArray into a sorted LinkedList
-        for (Car car : carsSortedArr) {
-            cars.add(car);
-        }
+        Collections.addAll(cars, carsSortedArr);
 //--------------------------------------------------------------------------------------------
 
         return cars;
     }
 
-    public void addCar(Car car){
-        cars.add(car);
-    }
 
-    public void removeCar(Car car){
-        cars.remove(car);
-    }
 
 
     public LinkedList<Car> getCars(){
