@@ -1,11 +1,13 @@
 package org.example.oop_assignment_web_app.Entity;
 
-public class User {
+public abstract class User {
+    //Abstraction
+    //Made User an abstract class because it should not be possible to make User objects
 
     protected String name;
     protected String email;
     protected String password;
-
+    //Encapsulation
 
 
     public User(){
@@ -51,4 +53,7 @@ public class User {
 
         this.password = password;
     }
+
+    public abstract String displayType();
+    //abstract method for children
 }
