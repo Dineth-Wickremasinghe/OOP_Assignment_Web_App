@@ -39,6 +39,27 @@ public class CarManager {
         } catch (IOException e) {
             System.out.println("Error loading cars: " + e.getMessage());
         }
+//DSA MERGE SORT ALGORITHM BASED SORTING IN ASCENDING ORDER-------------------------------
+
+        //create a car array
+        Car[] carArray = new Car[cars.size()];
+
+        //Convert LinkedList to array
+        int i = 0;
+        for (Car car : cars) {
+            carArray[i++] = car;
+        }
+        cars.clear();  // Clear after copying
+
+        //Sort unsorted carArray
+        Car[] carsSortedArr = MergeSort.mergeSort(carArray);
+
+        //Convert sorted carArray into a sorted LinkedList
+        for (Car car : carsSortedArr) {
+            cars.add(car);
+        }
+//--------------------------------------------------------------------------------------------
+
         return cars;
     }
 

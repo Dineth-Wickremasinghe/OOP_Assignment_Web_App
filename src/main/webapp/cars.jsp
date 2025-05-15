@@ -23,6 +23,9 @@
   }
 
   CarManager cm = new CarManager();
+  //get sorted car list
+
+
   LinkedList<Car> cars = cm.loadCars();
 %>
 
