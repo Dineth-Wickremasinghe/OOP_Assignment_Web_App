@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8"  %>
 <%@ page import="org.example.oop_assignment_web_app.Control.CarManager" %>
-<%@ page import="org.example.oop_assignment_web_app.Entity.Car" %>
+
 
 <%@ page import="org.example.oop_assignment_web_app.Control.CarLinkedList" %>
 <%@ page import="org.example.oop_assignment_web_app.Control.Link" %>

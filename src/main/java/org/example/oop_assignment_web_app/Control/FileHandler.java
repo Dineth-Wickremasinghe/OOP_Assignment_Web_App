@@ -43,7 +43,7 @@ public class FileHandler {
         // Exception Thrown
         catch (IOException e) {
             System.out.println("An error has occurred.");
-            e.printStackTrace();
+
         }
     }
 
@@ -55,7 +55,7 @@ public class FileHandler {
             System.out.println("Successfully wrote to the file.");
         }
         catch(IOException e){
-            e.printStackTrace();
+            System.out.println("An error has occurred in writing to file..");
         }
     }
     public static void fileWrite(CarLinkedList cars, String fileName,boolean append) {   //for adding cars part
@@ -85,7 +85,7 @@ public class FileHandler {
 
     //for transactions
     public static void fileWritetrans(LinkedList<Transaction> transactions, String fileName) {
-        String line = "";
+        String line;
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) { //changing append to false for testing
             for (Transaction transaction :transactions) {
                 line = transaction.getTransactionId() + "," +

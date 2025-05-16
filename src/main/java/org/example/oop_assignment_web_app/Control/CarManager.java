@@ -1,10 +1,8 @@
 package org.example.oop_assignment_web_app.Control;
 
 import org.example.oop_assignment_web_app.Entity.Car;
-import org.example.oop_assignment_web_app.Control.Link;
 import java.io.*;
-import java.util.Collections;
-//import java.util.LinkedList;
+
 
 public class CarManager {
     private static final String FILE_PATH = "C:/Files/cars.txt";
