@@ -1,22 +1,24 @@
 package org.example.oop_assignment_web_app.Control;
 
 import org.example.oop_assignment_web_app.Entity.Car;
-
+import org.example.oop_assignment_web_app.Control.Link;
 import java.io.*;
 import java.util.Collections;
-import java.util.LinkedList;
+//import java.util.LinkedList;
 
 public class CarManager {
     private static final String FILE_PATH = "C:/Files/cars.txt";
-    private LinkedList<Car> cars;
+    //private LinkedList<Car> cars;
+    private CarLinkedList cars;
 
     public CarManager() {
-        this.cars = new LinkedList<Car>();
+        //this.cars = new LinkedList<Car>();
         FileHandler.createFile(FILE_PATH);
+        cars = new CarLinkedList();
     }
 
 
-    public LinkedList<Car> loadCars() {
+    public CarLinkedList loadCars() {
         File file = new File(FILE_PATH);
 
         if (!file.exists()) {
@@ -34,29 +36,37 @@ public class CarManager {
                     String price = parts[3];
                     double priceDouble = Double.parseDouble(price);
                     Car car = new Car(carId, brand, model, priceDouble);
-                    cars.add(car);
+                    cars.insertFirst(car);
                 }
             }
         } catch (IOException e) {
             System.out.println("Error loading cars: " + e.getMessage());
         }
 //DSA MERGE SORT ALGORITHM BASED SORTING IN ASCENDING ORDER-------------------------------
+        if(cars.links!=0) {
+            //create a car array
+            Car[] carArray = new Car[cars.links];
 
-        //create a car array
-        Car[] carArray = new Car[cars.size()];
+            //Convert LinkedList to array
+            int i = 0;
+            Link current = cars.first;
+            while (current != null) {
+                carArray[i++] = current.car;
+                current = current.next;
 
-        //Convert LinkedList to array
-        int i = 0;
-        for (Car car : cars) {
-            carArray[i++] = car;
+            }
+            cars.deleteAll();  // Clear after copying
+
+            //Sort unsorted carArray
+            Car[] carsSortedArr = MergeSort.mergeSort(carArray);
+
+            //Convert sorted carArray into a sorted LinkedList
+
+            for (i = 0; i < carsSortedArr.length; i++) {
+                cars.insertLast(carsSortedArr[i]);
+            }
         }
-        cars.clear();  // Clear after copying
 
-        //Sort unsorted carArray
-        Car[] carsSortedArr = MergeSort.mergeSort(carArray);
-
-        //Convert sorted carArray into a sorted LinkedList
-        Collections.addAll(cars, carsSortedArr);
 //--------------------------------------------------------------------------------------------
 
         return cars;
@@ -65,8 +75,7 @@ public class CarManager {
 
 
 
-    public LinkedList<Car> getCars(){
-
+    public CarLinkedList getCars(){
         return cars;
     }
 
@@ -79,48 +88,21 @@ public class CarManager {
             return false;
         }
         Car newCar = new Car(brand, model, price);
-        boolean result = cars.add(newCar);
-        if (result) {
-            FileHandler.fileWrite(cars, FILE_PATH);
-        }
-        return result;
-    }
-
-
-
-    public Car getCarById(String id) {
-        for (Car car : cars) {
-            if (car.getId().equals(id)) {
-                return car;
-            }
-        }
-        return null;
-    }
-
-    public boolean updateCar(String id, String brand, String model, double price) {
-        Car car = getCarById(id);
-        if (car != null) {
-            if (!car.getId().equals(id)) {
-                for (Car b : cars) {
-                    if (b.getId().equals(id)) {
-                        return false;
-                    }
-                }
-            }
-
-            car.setId(id);
-            car.setBrand(brand);
-            car.setModel(model);
-            car.setPrice(price);
-
-
-            FileHandler.fileWrite(cars, FILE_PATH);
+        cars.insertFirst(newCar);
+        if (cars.links != 0) {
+            FileHandler.fileWrite(cars, FILE_PATH,true);
             return true;
         }
         return false;
     }
 
 
+
+    public Car getCarById(String id) {
+        return cars.find(id).car;
+    }
+
+/*
     public boolean deleteCar(String username) {
         File file = new File(FILE_PATH);
         File tempFile = new File(FILE_PATH + ".tmp");
@@ -147,8 +129,19 @@ public class CarManager {
 
     }
 
+*/
+    public boolean deleteCar(String id) {
+        try{
+            cars.delete(id);
+            FileHandler.fileWrite(cars, FILE_PATH,false);
+            return true;
+        }
+        catch (Exception e){
+            System.out.println("Unable to delete car: " + id);
+            return false;
+        }
 
-
+    }
 
 
 }

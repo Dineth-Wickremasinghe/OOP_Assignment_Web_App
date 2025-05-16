@@ -32,13 +32,13 @@ public class editCarServlet extends HttpServlet {
 
             // update car and add to system
             CarManager cd = new CarManager();
-            boolean success = cd.updateCar(id,brand,model,price);
-
+            //boolean success = cd.updateCar(id,brand,model,price);
+            /*
             if (success) {
                 response.sendRedirect("cars.jsp");
             } else {
                 response.sendRedirect("editCar.jsp?error=Failed to update car");
-            }
+            }*/
         } catch (NumberFormatException e) {
             response.sendRedirect("editCar.jsp?error=Invalid price format");
         } catch (Exception e) {

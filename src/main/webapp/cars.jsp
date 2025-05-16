@@ -1,7 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8"  %>
 <%@ page import="org.example.oop_assignment_web_app.Control.CarManager" %>
 <%@ page import="org.example.oop_assignment_web_app.Entity.Car" %>
-<%@ page import="java.util.LinkedList" %>
+
+<%@ page import="org.example.oop_assignment_web_app.Control.CarLinkedList" %>
+<%@ page import="org.example.oop_assignment_web_app.Control.Link" %>
 <%
   String auth = null;
   String type  = null;
@@ -26,7 +28,7 @@
 
 
 
-  LinkedList<Car> cars = cm.loadCars();
+  CarLinkedList cars = cm.loadCars();
 %>
 
 <html>
@@ -91,22 +93,24 @@
 
 <div class="car-list">
   <%
-    for (Car car : cars) {
+    Link current = cars.first;
+
+    while(current!=null) {
   %>
   <div class="car-card">
-    <h5><%= car.getBrand() %> <%= car.getModel() %></h5>
+    <h5><%= current.car.getBrand() %> <%=current.car.getModel() %></h5>
     <div class="car-details">
-      <p><strong>ID:</strong> <%= car.getId() %></p>
-      <p><strong>Price:</strong> $<%= car.getPrice() %></p>
+      <p><strong>ID:</strong> <%= current.car.getId() %></p>
+      <p><strong>Price:</strong> $<%= current.car.getPrice() %></p>
     </div>
     <div class="action-buttons">
 
-        <a class="btn btn-info btn-sm" href="viewcar.jsp?carID=<%= car.getId() %>">View</a><br><br>
+        <a class="btn btn-info btn-sm" href="viewcar.jsp?carID=<%= current.car.getId() %>">View</a><br><br>
         <form action="bookingPage.jsp" method="post">
-          <input type=  "hidden" name="carId" value="<%= car.getId() %>">
+          <input type=  "hidden" name="carId" value="<%= current.car.getId() %>">
           <input type = "hidden" name="userId" value="<%= request.getAttribute("userId") %>">
-          <input type = "hidden" name="brand" value="<%= car.getBrand() %>">
-          <input type = "hidden" name="model" value="<%= car.getModel() %>">
+          <input type = "hidden" name="brand" value="<%= current.car.getBrand() %>">
+          <input type = "hidden" name="model" value="<%= current.car.getModel() %>">
 
           <button type="submit" class="btn btn-success">Create Booking</button>
         </form>
@@ -117,6 +121,7 @@
     </div>
   </div>
   <%
+      current = current.next;
     }
   %>
 </div>
