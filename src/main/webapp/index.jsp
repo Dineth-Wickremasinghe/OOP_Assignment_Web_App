@@ -43,7 +43,7 @@
         }
 
         .navbar .nav-link {
-            color: white !important;
+            color: white ;
             font-size: 16px;
             margin: 0 15px;
             transition: all 0.3s ease;
