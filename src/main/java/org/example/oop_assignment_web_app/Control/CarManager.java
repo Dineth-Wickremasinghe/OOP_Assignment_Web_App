@@ -27,13 +27,14 @@ public class CarManager {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
-                if (parts.length == 4) {
+                if (parts.length == 5) {
                     String carId = parts[0];
                     String brand = parts[1];
                     String model = parts[2];
                     String price = parts[3];
+                    String image = parts[4];
                     double priceDouble = Double.parseDouble(price);
-                    Car car = new Car(carId, brand, model, priceDouble);
+                    Car car = new Car(carId, brand, model, priceDouble, image);
                     cars.insertFirst(car);
                 }
             }
@@ -79,14 +80,15 @@ public class CarManager {
 
 
 
-    public boolean createCar(String brand, String model, double price) {
+    public boolean createCar(String brand, String model, double price,String imagePath) {
         try{FileHandler.createFile(FILE_PATH);}
         catch (Exception e){
             System.out.println("Unable to create file");
             return false;
         }
-        Car newCar = new Car(brand, model, price);
+        Car newCar = new Car(brand, model, price,imagePath);
         cars.insertFirst(newCar);
+
         if (!cars.isEmpty()) {
             FileHandler.fileWrite(cars, FILE_PATH,true);
             return true;

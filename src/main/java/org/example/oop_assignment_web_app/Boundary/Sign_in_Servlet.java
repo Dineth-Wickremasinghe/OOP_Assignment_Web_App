@@ -22,6 +22,7 @@ public class Sign_in_Servlet extends HttpServlet {
 
 
         CustomerManager cm = new CustomerManager();
+
         if (cm.auth(username, password)){
             Cookie loginCookie = new Cookie("auth", username);
             loginCookie.setMaxAge(3600);

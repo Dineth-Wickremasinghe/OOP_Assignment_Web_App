@@ -27,10 +27,12 @@ public class AddCustomerServlet extends HttpServlet {
         String email = request.getParameter("email");
         String username = request.getParameter("name");
         String password = request.getParameter("password");
+        String fullName = request.getParameter("fullName");
+        int phone = Integer.parseInt(request.getParameter("number"));
 
 
 
-        Customer customer = new Customer(username, email, password); // Create Customer object
+        Customer customer = new Customer(username, email, password,fullName,phone); // Create Customer object
         try {
             customerManager.setCustomer(customer);
             customerManager.registerCustomer(customer);

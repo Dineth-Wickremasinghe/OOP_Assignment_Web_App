@@ -17,20 +17,31 @@ public class EditCustomerServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String oldUsername = request.getParameter("oldUsername");
-        String oldPassword = request.getParameter("oldPassword");
         String password = request.getParameter("password");
         String email = request.getParameter("email");
+        String fullName = request.getParameter("fullName");
+        String number = request.getParameter("number");
+        int numbString = Integer.parseInt(number);
 
         try {
-            Customer c;
-            if(!password.isEmpty()) {
-                c = new Customer(oldUsername, email, password);
-            }
-            else{
-                c = new Customer(oldUsername, email, oldPassword);
-            }
             CustomerManager cm = new CustomerManager();
-            cm.editCustomer(c);
+            Customer c2 = cm.getCustomerDetails(oldUsername);
+
+            if (email!=null) {
+                c2.setEmail(email);
+            }
+            if (password!=null) {
+                c2.setPassword(password);
+            }
+            if(fullName!=null) {
+                c2.setFullName(fullName);
+            }
+            if(number!=null) {
+                c2.setPhone(numbString);
+            }
+
+
+            cm.editCustomer(c2);
             response.sendRedirect("myCustomerAccount.jsp");
         }
         catch (Exception e) {

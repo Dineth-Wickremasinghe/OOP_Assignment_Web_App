@@ -47,6 +47,7 @@ public class FileHandler {
         }
     }
 
+    //customer writing
     public static void fileWrite(String line, String fileName) {
         try(BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))){
             writer.write(line +"\n");
@@ -64,11 +65,9 @@ public class FileHandler {
 
             while (current != null) {
                 Car car = current.car;
+                System.out.println("TESTING: image: "+car.getImagePath());
+                String line = car.getId() + "," + car.getBrand() + "," + car.getModel() + "," + car.getPrice() + "," + car.getImagePath();
 
-                String line = car.getId() + "," +
-                        car.getBrand() + "," +
-                        car.getModel() + "," +
-                        car.getPrice();
 
                 writer.write(line);
                 writer.newLine();
