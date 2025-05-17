@@ -53,13 +53,7 @@
       padding: 10px;
     }
 
-    .car-card {
-      background-color: #fff;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      margin-bottom: 20px;
-    }
+
 
     .car-card h5 {
       margin-bottom: 10px;
@@ -154,7 +148,7 @@
       current = current.next;
     }
   %>
-</div>
+
 <% if("Admin".equals(type)) { %>
 <a href="addcar.jsp" class="btn btn-primary add-button">Add New Car</a>
 <% }%>
