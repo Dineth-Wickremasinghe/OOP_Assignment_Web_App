@@ -34,7 +34,7 @@ public class CarLinkedList {
         return null;
     }
 
-    public void displayList() {
+    public void displayList() { //for testing
         Link current = first;
         while (current != null) {
             current.displayLink();
