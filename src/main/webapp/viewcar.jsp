@@ -81,7 +81,15 @@
 <h2 class="bg-success p-2 text-white bg-opacity-75">Car Details</h2>
 
 <% if (selectedCar != null) { %>
+
+
 <div class="car-details">
+
+    <div class="d-flex justify-content-center">
+        <img src="ImageServlet?image=<%= selectedCar.getImagePath() %>" width="600" />
+
+    </div>
+    <br>
     <ul class="list-group">
         <li class="list-group-item"><strong>ID:</strong> <%= selectedCar.getId() %></li>
         <li class="list-group-item"><strong>Brand:</strong> <%= selectedCar.getBrand() %></li>

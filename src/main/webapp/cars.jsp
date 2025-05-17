@@ -97,29 +97,59 @@
 
     while(current!=null) {
   %>
-  <div class="car-card">
-    <h5><%= current.car.getBrand() %> <%=current.car.getModel() %></h5>
-    <div class="car-details">
-      <p><strong>ID:</strong> <%= current.car.getId() %></p>
-      <p><strong>Price:</strong> $<%= current.car.getPrice() %></p>
-    </div>
-    <div class="action-buttons">
+  <div class="card mb-4 shadow-sm">
+    <div class="row g-0 align-items-center">
 
-        <a class="btn btn-info btn-sm" href="viewcar.jsp?carID=<%= current.car.getId() %>">View</a><br><br>
-        <form action="bookingPage.jsp" method="post">
-          <input type=  "hidden" name="carId" value="<%= current.car.getId() %>">
-          <input type = "hidden" name="userId" value="<%= request.getAttribute("userId") %>">
-          <input type = "hidden" name="brand" value="<%= current.car.getBrand() %>">
-          <input type = "hidden" name="model" value="<%= current.car.getModel() %>">
+      <!-- Text section (left) -->
+      <div class="col-md-8 p-4">
+        <h5 class="card-title"><%= current.car.getBrand() %> <%= current.car.getModel() %></h5>
+        <p class="card-text"><strong>Price:</strong> $<%= current.car.getPrice() %></p>
+      </div>
 
-          <button type="submit" class="btn btn-success">Create Booking</button>
-        </form>
-
-
-
+      <!-- Image section (right) -->
+      <div class="col-md-4 text-end pe-4">
+        <%
+          String encodedImagePath = java.net.URLEncoder.encode(current.car.getImagePath(), "UTF-8");
+        %>
+        <img src="ImageServlet?image=<%= encodedImagePath %>" class="img-fluid rounded" style="max-height: 150px;" alt="Car Image">
+      </div>
 
     </div>
   </div>
+
+
+
+  <div class="px-4 pb-4">
+    <div class="d-flex gap-2">
+
+      <!-- View Button -->
+      <form action="viewcar.jsp" method="get" class="d-inline">
+        <input type="hidden" name="carID" value="<%= current.car.getId() %>">
+        <button type="submit" class="btn btn-primary btn-sm">
+          View
+        </button>
+      </form>
+
+      <!-- Book Button -->
+      <form action="bookingPage.jsp" method="post" class="d-inline">
+        <input type="hidden" name="carId" value="<%= current.car.getId() %>">
+        <input type="hidden" name="userId" value="<%= request.getAttribute("userId") %>">
+        <input type="hidden" name="brand" value="<%= current.car.getBrand() %>">
+        <input type="hidden" name="model" value="<%= current.car.getModel() %>">
+        <input type="hidden" name="image" value="<%= current.car.getImagePath() %>">
+        <button type="submit" class="btn btn-success btn-sm">
+          Book
+        </button>
+      </form>
+
+    </div>
+  </div>
+
+
+
+
+
+</div>
   <%
       current = current.next;
     }

@@ -9,6 +9,7 @@ public class Car {
     private String brand;
     private String model;
     private double price;
+    private String imagePath;
     private List<Review> reviews;//Added List to store reviews
 
     public Car() {
@@ -17,22 +18,25 @@ public class Car {
         this.model = "";
         this.price = 0;
         this.reviews = new ArrayList<>();
+        this.imagePath = "";
 
     }
-    public Car(String id, String brand, String model, double price) {
+    public Car(String id, String brand, String model, double price, String imagePath) {
         this.id = id;
         this.brand = brand;
         this.model = model;
         this.price = price;
         this.reviews = new ArrayList<>();
+        this.imagePath = imagePath;
     }
 
-    public Car(String brand, String model, double price) {
+    public Car(String brand, String model, double price, String imagePath) {
         this.id = UUID.randomUUID().toString();
         this.brand = brand;
         this.model = model;
         this.price = price;
         this.reviews = new ArrayList<>();
+        this.imagePath = imagePath;
     }
 
 
@@ -66,6 +70,14 @@ public class Car {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 
     public List<Review> getReviews() {

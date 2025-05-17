@@ -96,7 +96,7 @@
 </div>
 <% } %>
 
-<form action="addCarServlet" method="post" class="form-group">
+<form action="addCarServlet" method="post" class="form-group" enctype="multipart/form-data">
     <div class="mb-3">
         <label for="brand" class="form-label">Brand:</label>
         <input type="text" name="brand" id="brand" class="form-control" required>
@@ -109,6 +109,11 @@
         <label for="price" class="form-label">Price:</label>
         <input type="number" step="0.01" min="0" name="price" id="price" class="form-control" required>
     </div>
+    <div class="mb-3">
+        <label for="carImage" class="form-label">Image:</label>
+        <input type="file" name="carImage" id="carImage" class="form-control" required>
+    </div>
+
     <button type="submit" class="btn btn-primary">Add Car</button>
     <a href="cars.jsp" class="btn btn-secondary">Cancel</a>
 </form>
