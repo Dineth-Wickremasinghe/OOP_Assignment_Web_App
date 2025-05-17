@@ -50,10 +50,7 @@ public class FileHandler {
     //customer writing
     public static void fileWrite(String line, String fileName) {
         try(BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))){
-            writer.write(line +"\n");
-            writer.newLine();
-            writer.close();
-            System.out.println("Successfully wrote to the file.");
+            writer.write(line);
         }
         catch(IOException e){
             System.out.println("An error has occurred in writing to file..");
@@ -65,7 +62,7 @@ public class FileHandler {
 
             while (current != null) {
                 Car car = current.car;
-                System.out.println("TESTING: image: "+car.getImagePath());
+
                 String line = car.getId() + "," + car.getBrand() + "," + car.getModel() + "," + car.getPrice() + "," + car.getImagePath();
 
 

@@ -5,8 +5,8 @@ import org.example.oop_assignment_web_app.Entity.Customer;
 import java.io.*;
 
 public class CustomerManager {
-    private static final String CUSTOMER_FILE = "C:/Files/customer1.txt";
-    Customer customer;
+    private static final String CUSTOMER_FILE = "C:/Files/Customer.txt";
+    private Customer customer;
 
 
 
@@ -21,10 +21,12 @@ public class CustomerManager {
             throw new IllegalArgumentException("Customer object cannot be null");
         }
 
+
+
         try {
             String hashedPassword = PasswordUtil.hashPassword(c.getPassword());
-            String numbString = String.valueOf(c.getPhone());
-            String line = String.join(",", c.getName(), c.getEmail(), hashedPassword, c.displayType(), c.getFullName(), numbString);
+
+            String line = String.join(",", c.getName(), c.getEmail(), hashedPassword, c.displayType(), c.getFullName(), c.getPhone());
             try{
                 FileHandler.createFile(CUSTOMER_FILE);
 
@@ -37,9 +39,6 @@ public class CustomerManager {
 
             }
 
-
-            System.out.println("File written to " + CUSTOMER_FILE);  //for testing
-            System.out.println(line);
         } catch (Exception e) {
             System.err.println("Error saving customer: " + e.getMessage());
 
@@ -79,10 +78,10 @@ public class CustomerManager {
                     String storedHashedPassword = parts[2].trim();
                     String email = parts[1].trim();
                     String fullName = parts[4].trim();
-                    int numbString =Integer.parseInt(parts[5].trim());
+                    String number =parts[5].trim();
 
                     if (storedUsername.equals(username)) {
-                        return new Customer(storedUsername, email ,storedHashedPassword,fullName,numbString);
+                        return new Customer(storedUsername, email ,storedHashedPassword,fullName,number);
                     }
                 }
             }
@@ -150,7 +149,11 @@ public class CustomerManager {
     }
 
 
-
+    public Customer getCustomer() {
+        if(customer == null)
+            System.out.println("No customer assigned to customer Manager");
+        return customer;
+    }
 }
 
 
