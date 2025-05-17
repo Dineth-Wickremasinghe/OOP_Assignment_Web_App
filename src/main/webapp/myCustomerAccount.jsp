@@ -27,6 +27,8 @@
 
     String name = c.getName();
     String email = c.getEmail();
+    String fullname = c.getFullName();
+    String number = String.valueOf(c.getPhone());
 
 %>
 
@@ -54,8 +56,11 @@
             <h1 class="mb-0">Customer Account Details</h1>
         </div>
         <div class="card-body">
+            <p><strong>Full Name: </strong> <%= fullname %></p>
             <p><strong>Username:</strong> <%= name %></p>
             <p><strong>Email:</strong> <%= email %></p>
+            <p><strong>Phone number: </strong>0<%= number %> </p>
+
             <a class="btn btn-info" href="editCustomer.jsp" role="button">Edit Account Details</a>
 
         </div>

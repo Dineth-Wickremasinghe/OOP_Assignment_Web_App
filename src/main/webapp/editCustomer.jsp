@@ -71,6 +71,16 @@
             <label for="floatingPassword">Password</label>
         </div>
 
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="fullName" name="fullName" placeholder="John Smith">
+            <label for="fullName">Full Name</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="number" name="number" pattern="^\d{10}$" required  >
+            <label for="number">Phone number</label>
+        </div>
+
         <button type="submit" class="btn btn-secondary">Submit</button>
     </form>
 

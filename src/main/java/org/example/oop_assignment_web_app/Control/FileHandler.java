@@ -43,10 +43,11 @@ public class FileHandler {
         // Exception Thrown
         catch (IOException e) {
             System.out.println("An error has occurred.");
-            e.printStackTrace();
+
         }
     }
 
+    //customer writing
     public static void fileWrite(String line, String fileName) {
         try(BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))){
             writer.write(line +"\n");
@@ -55,23 +56,24 @@ public class FileHandler {
             System.out.println("Successfully wrote to the file.");
         }
         catch(IOException e){
-            e.printStackTrace();
+            System.out.println("An error has occurred in writing to file..");
         }
     }
-    public static void fileWrite(LinkedList<Car> cars, String fileName) {   //for adding cars part
-        String line = "";
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
-            for (Car car : cars) {
-                line = car.getId() + "," +
-                        car.getBrand() + "," +
-                        car.getModel() + "," +
-                        car.getPrice();
+    public static void fileWrite(CarLinkedList cars, String fileName,boolean append) {   //for adding cars part
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName,append))) {
+            Link current = cars.first;
+
+            while (current != null) {
+                Car car = current.car;
+                System.out.println("TESTING: image: "+car.getImagePath());
+                String line = car.getId() + "," + car.getBrand() + "," + car.getModel() + "," + car.getPrice() + "," + car.getImagePath();
+
+
                 writer.write(line);
                 writer.newLine();
+
+                current = current.next;
             }
-
-
-
 
         } catch (IOException e) {
             System.out.println("Error saving cars: " + e.getMessage());
@@ -79,9 +81,10 @@ public class FileHandler {
     }
 
 
+
     //for transactions
     public static void fileWritetrans(LinkedList<Transaction> transactions, String fileName) {
-        String line = "";
+        String line;
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) { //changing append to false for testing
             for (Transaction transaction :transactions) {
                 line = transaction.getTransactionId() + "," +
