@@ -10,9 +10,31 @@
 <html>
 <head>
     <link rel ="stylesheet" href ="CSS/bootstrap.min.css">
+
+
     <title>Add Customer</title>
 </head>
 <body>
+<% String message = request.getParameter("message");
+   String error = request.getParameter("error");
+%>
+<% if (message != null) { %>
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <%= message %>
+
+</div>
+<% }
+if(error!=null){
+%>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+<%= error %>
+</div>
+<%
+}
+
+%>
+
+
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -36,6 +58,11 @@
                         <div class="form-floating mb-3">
                             <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password" required>
                             <label for="floatingPassword">Password</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Password" required>
+                            <label for="confirmPassword">Password</label>
                         </div>
 
                         <div class="form-floating mb-3">

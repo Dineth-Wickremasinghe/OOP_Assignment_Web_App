@@ -1,15 +1,15 @@
 package org.example.oop_assignment_web_app.Entity;
 
 public class Customer extends User { //Inheritance
-    String type = "Customer";
+    private String type = "Customer";
     private String fullName;
-    private int phone;
+    private String phone;
 
 
     public Customer(){
         this.type = "Customer";
     }
-    public Customer(String name, String email, String password, String fullName, int phone) {
+    public Customer(String name, String email, String password, String fullName, String phone) {
         super(name,email,password);
         this.fullName = fullName;
         this.phone = phone;
@@ -30,19 +30,13 @@ public class Customer extends User { //Inheritance
         this.fullName = fullName;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
-    public String getEmail() {
-        return super.getEmail();
-    }
-    public String getName(){
-        return super.getName();
-    }
 }
 

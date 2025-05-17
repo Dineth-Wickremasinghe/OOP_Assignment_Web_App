@@ -28,12 +28,29 @@ public class AddCustomerServlet extends HttpServlet {
         String username = request.getParameter("name");
         String password = request.getParameter("password");
         String fullName = request.getParameter("fullName");
-        int phone = Integer.parseInt(request.getParameter("number"));
+        String phone = request.getParameter("number");
+        String confirmPassword = request.getParameter("confirmPassword");
 
+
+        //checking if username is taken
+        Customer existingCustomer = customerManager.getCustomerDetails(username);
+        if (existingCustomer != null) {
+            response.sendRedirect("register.jsp?message=Username+taken");
+            return;
+        }
+
+        //checking if passwords entered match
+        if(!confirmPassword.equals(password)) {
+            response.sendRedirect("register.jsp?error=Passwords+do+not+match");
+            return;
+
+        }
 
 
         Customer customer = new Customer(username, email, password,fullName,phone); // Create Customer object
+
         try {
+
             customerManager.setCustomer(customer);
             customerManager.registerCustomer(customer);
 
