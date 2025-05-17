@@ -1,6 +1,6 @@
 package org.example.oop_assignment_web_app.Boundary;
 
-import jakarta.servlet.ServletException;
+
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 

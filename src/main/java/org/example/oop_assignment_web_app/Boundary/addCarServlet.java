@@ -9,7 +9,7 @@ import org.example.oop_assignment_web_app.Control.CarManager;
 import java.util.UUID;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Paths;
+
 
 @MultipartConfig(
         fileSizeThreshold = 1024 * 1024,  // 1 MB
@@ -18,10 +18,7 @@ import java.nio.file.Paths;
 )
 @WebServlet(name = "addCarServlet", value = "/addCarServlet")
 public class addCarServlet extends HttpServlet {
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

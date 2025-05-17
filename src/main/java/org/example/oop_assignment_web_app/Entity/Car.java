@@ -76,9 +76,6 @@ public class Car {
         return imagePath;
     }
 
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
-    }
 
     public List<Review> getReviews() {
         return new ArrayList<>(reviews);//Return a copy for encapsulation
