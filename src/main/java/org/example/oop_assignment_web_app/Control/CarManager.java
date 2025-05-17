@@ -86,7 +86,7 @@ public class CarManager {
             System.out.println("Unable to create file");
             return false;
         }
-        Car newCar = new Car(brand, model, price, imagePath);
+        Car newCar = new Car(brand, model, price,imagePath);
         cars.insertFirst(newCar);
 
         if (!cars.isEmpty()) {

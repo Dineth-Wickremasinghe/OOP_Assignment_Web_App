@@ -5,6 +5,8 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import org.example.oop_assignment_web_app.Control.CarManager;
 
+
+import java.util.UUID;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -64,7 +66,7 @@ public class addCarServlet extends HttpServlet {
             }
 
 // Sanitize and get the filename
-            String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+            String fileName = UUID.randomUUID().toString();
 
 // Save it to C:/Files/
             String saveDir = "C:/Files/Images/";

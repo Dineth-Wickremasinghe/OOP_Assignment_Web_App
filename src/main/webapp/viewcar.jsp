@@ -100,7 +100,7 @@
     <div class="btn-group">
         <a href="cars.jsp" class="btn btn-secondary">Back to Car List</a>
         <% if("Admin".equals(type)) { %>
-        <a href="editCar.jsp?carID=<%= selectedCar.getId() %>" class="btn btn-warning">Edit Car</a>
+
 
         <a href="deleteCar.jsp?carID=<%= selectedCar.getId() %>" class="btn btn-danger">Delete Car</a>
         <% }%>
