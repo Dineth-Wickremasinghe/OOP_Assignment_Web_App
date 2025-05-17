@@ -33,7 +33,7 @@ public class CustomerManager {
 
             }
             catch (Exception e){
-                System.out.println("Error saving new customer account");;
+                System.out.println("Error saving new customer account");
 
             }
 

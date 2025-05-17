@@ -9,7 +9,7 @@ public class Car {
     private String brand;
     private String model;
     private double price;
-    private String imagePath;
+    private final String imagePath;
     private List<Review> reviews;//Added List to store reviews
 
     public Car() {
