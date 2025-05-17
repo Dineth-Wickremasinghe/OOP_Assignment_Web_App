@@ -87,7 +87,7 @@ public class CarManager {
         }
         Car newCar = new Car(brand, model, price);
         cars.insertFirst(newCar);
-        if (cars.links != 0) {
+        if (!cars.isEmpty()) {
             FileHandler.fileWrite(cars, FILE_PATH,true);
             return true;
         }
@@ -100,34 +100,7 @@ public class CarManager {
         return cars.find(id).car;
     }
 
-/*
-    public boolean deleteCar(String username) {
-        File file = new File(FILE_PATH);
-        File tempFile = new File(FILE_PATH + ".tmp");
 
-        try (BufferedReader br = new BufferedReader(new FileReader(file));
-             PrintWriter pw = new PrintWriter(new FileWriter(tempFile))) {
-
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] parts = line.split(",");
-                if (!parts[0].equals(username)) {
-                    pw.println(line);
-                }
-            }
-        }
-        catch (IOException e) {
-            System.out.println("Error deleting file!");
-            return false;
-        }
-
-        file.delete();
-        tempFile.renameTo(file);
-        return true;
-
-    }
-
-*/
     public boolean deleteCar(String id) {
         try{
             cars.delete(id);
