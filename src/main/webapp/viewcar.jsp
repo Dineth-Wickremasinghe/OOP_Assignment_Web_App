@@ -86,7 +86,7 @@
 <div class="car-details">
 
     <div class="d-flex justify-content-center">
-        <img src="ImageServlet?image=<%= selectedCar.getImagePath() %>" width="600" />
+        <img src="ImageServlet?image=<%= selectedCar.getImagePath() %>" width="600"  alt="car image"/>
 
     </div>
     <br>
