@@ -47,6 +47,7 @@ public class FileHandler {
         }
     }
 
+    //customer writing
     public static void fileWrite(String line, String fileName) {
         try(BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))){
             writer.write(line +"\n");
