@@ -8,7 +8,7 @@
     <title>Prime Wheels - Premium Used Cars</title>
     <style>
         :root {
-            --primary-blue: #0d47a1;
+            --primary-blue: #2196F3;
             --secondary-blue: #1565c0;
             --light-blue: #e3f2fd;
         }
@@ -218,7 +218,7 @@
 
 <footer>
     <div class="container">
-        <p class="mb-0">&copy; 2025mPrime Wheels. All rights reserved.</p>
+        <p class="mb-0">&copy; 2025 Prime Wheels. All rights reserved.</p>
     </div>
 </footer>
 
