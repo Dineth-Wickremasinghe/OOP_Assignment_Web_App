@@ -62,7 +62,7 @@ if(error!=null){
 
                         <div class="form-floating mb-3">
                             <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Password" required>
-                            <label for="confirmPassword">Password</label>
+                            <label for="confirmPassword">Confirm Password</label>
                         </div>
 
                         <div class="form-floating mb-3">
