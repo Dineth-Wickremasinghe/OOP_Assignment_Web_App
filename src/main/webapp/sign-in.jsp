@@ -12,6 +12,14 @@
     <link rel ="stylesheet" href ="CSS/bootstrap.min.css">
 </head>
 <body>
+
+    <% String error = request.getParameter("error");
+        if (error != null) { %>
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <%= error %>
+
+</div>
+<% } %>
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
