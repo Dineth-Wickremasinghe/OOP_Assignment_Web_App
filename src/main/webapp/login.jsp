@@ -10,23 +10,42 @@
 <html>
 <head>
     <title>Admin Login</title>
-    <link rel="stylesheet" type="text/css" href="../CSS/style.css">
+    <link rel="stylesheet" href="CSS/bootstrap.min.css">
 </head>
 <body>
-<div class="container">
-    <h1>Admin Login</h1>
-    <form action="AdminLoginServlet" method="post">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required><br>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg rounded-4">
+                <div class="card-header bg-primary text-white text-center fs-4">
+                    Employee Sign In
+                </div>
+                <div class="card-body p-4">
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br>
+                    <form method="post" action="AdminLoginServlet">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingInput" name="username" placeholder="John Doe" required>
+                            <label for="floatingInput">Username</label>
+                        </div>
 
-        <button type="submit">Login</button>
-    </form>
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password" required>
+                            <label for="floatingPassword">Password</label>
+                        </div>
+
+                        <button type="submit" class="btn btn-success w-100 mb-2">Sign In</button>
+
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
     <c:if test="${not empty errorMessage}">
         <p style="color: red;">${errorMessage}</p>
     </c:if>
 </div>
 </body>
 </html>
+

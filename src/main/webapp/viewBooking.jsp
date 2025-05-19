@@ -29,7 +29,7 @@
 <html>
 <head>
     <title>My Bookings - Prime Wheels</title>
-    <link rel="stylesheet" href="CSS/styleBooking.css">
+    <link rel="stylesheet" href="CSS/bootstrap.min.css">
     <script>
         function confirmDelete() {
             return confirm("Are you sure you want to delete this booking?");
@@ -45,49 +45,54 @@
         }
     </script>
 </head>
-<body>
-<% if ("Admin".equals(type)) {
- %>
+<body class="bg-light">
 
-<h1>All Bookings</h1>
-<% } else{
-%>
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="text-primary"><%= "Admin".equals(type) ? "All Bookings" : "My Bookings" %></h1>
+        <a href="cars.jsp" class="btn btn-secondary">Back</a>
+    </div>
 
-<h1>My Bookings</h1>
-<% }%>
-<% if (request.getAttribute("error") != null) { %>
-<p style="color: red;"><%= request.getAttribute("error") %></p>
-<% } %>
-<table>
-    <tr>
-        <th>User ID</th>
-        <th>Car ID</th>
-        <th>Brand</th>
-        <th>Model</th>
-        <th>Date</th>
+    <% if (request.getAttribute("error") != null) { %>
+    <div class="alert alert-danger">
+        <%= request.getAttribute("error") %>
+    </div>
+    <% } %>
 
-    </tr>
-    <%
-        List<Booking> bookings = (List<Booking>) request.getAttribute("bookings");
-        if (bookings != null) {
-            for (Booking booking : bookings) {
-    %>
-    <% if (booking.getUserId().equals(request.getParameter("userId")) || type.equals("Admin")){ %>
-    <tr>
-        <td><%= booking.getUserId() %></td>
-        <td><%= booking.getCarId() %></td>
-        <td><%= booking.getBrand() %></td>
-        <td><%= booking.getModel() %></td>
-        <td><%= booking.getDate() %></td>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered shadow-sm">
+            <thead class="table-secondary">
+            <tr>
+                <th>User ID</th>
+                <th>Car ID</th>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            <%
+                List<Booking> bookings = (List<Booking>) request.getAttribute("bookings");
+                if (bookings != null) {
+                    for (Booking booking : bookings) {
+                        if (booking.getUserId().equals(request.getParameter("userId")) || "Admin".equals(type)) {
+            %>
+            <tr>
+                <td><%= booking.getUserId() %></td>
+                <td><%= booking.getCarId() %></td>
+                <td><%= booking.getBrand() %></td>
+                <td><%= booking.getModel() %></td>
+                <td><%= booking.getDate() %></td>
+            </tr>
+            <%      }
+            }
+            }
+            %>
+            </tbody>
+        </table>
+    </div>
+</div>
 
-    </tr>
-
-    <%}
-    }
-    }
-    %>
-</table>
-<br>
-<a href="cars.jsp"> Back </a>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
