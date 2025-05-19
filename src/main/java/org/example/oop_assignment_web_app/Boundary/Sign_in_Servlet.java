@@ -36,7 +36,9 @@ public class Sign_in_Servlet extends HttpServlet {
 
         }
         else{
-            response.sendRedirect("sign-in.jsp");
+
+            response.sendRedirect("sign-in.jsp?error=Invalid+Password+or+Username");
+
         }
     }
 }
