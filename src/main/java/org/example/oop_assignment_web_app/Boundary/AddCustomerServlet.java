@@ -51,7 +51,7 @@ public class AddCustomerServlet extends HttpServlet {
 
         try {
 
-            customerManager.setCustomer(customer);
+
             customerManager.registerCustomer(customer);
 
             //automatic signing in

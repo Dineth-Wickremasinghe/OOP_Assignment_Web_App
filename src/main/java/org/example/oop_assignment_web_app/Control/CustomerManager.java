@@ -6,13 +6,6 @@ import java.io.*;
 
 public class CustomerManager {
     private static final String CUSTOMER_FILE = "C:/Files/Customer.txt";
-    private Customer customer;
-
-
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
 
     // Register a customer by writing to the file
     public void registerCustomer(Customer c) {
@@ -149,11 +142,7 @@ public class CustomerManager {
     }
 
 
-    public Customer getCustomer() {
-        if(customer == null)
-            System.out.println("No customer assigned to customer Manager");
-        return customer;
-    }
+
 }
 
 

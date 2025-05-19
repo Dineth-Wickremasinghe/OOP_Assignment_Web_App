@@ -32,7 +32,7 @@ public class FileHandler {
             // Creating File
             if (file.createNewFile()) {
                 System.out.println("File created: " + file.getName());
-                System.out.println("File path"+ file.getAbsolutePath());
+                System.out.println("File path: "+ file.getAbsolutePath());
             }
             else {
                 System.out.println("File already exists.");
@@ -50,7 +50,7 @@ public class FileHandler {
     //customer writing
     public static void fileWrite(String line, String fileName) {
         try(BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))){
-            writer.write(line);
+            writer.write(line+"\n");
         }
         catch(IOException e){
             System.out.println("An error has occurred in writing to file..");
