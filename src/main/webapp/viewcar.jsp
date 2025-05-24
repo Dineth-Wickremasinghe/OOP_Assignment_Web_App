@@ -1,7 +1,7 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page import="org.example.oop_assignment_web_app.Control.CarManager" %>
 <%@ page import="org.example.oop_assignment_web_app.Entity.Car" %>
-<%@ page import="java.util.LinkedList" %>
+
 
 <%
     String auth = null;
@@ -81,7 +81,15 @@
 <h2 class="bg-success p-2 text-white bg-opacity-75">Car Details</h2>
 
 <% if (selectedCar != null) { %>
+
+
 <div class="car-details">
+
+    <div class="d-flex justify-content-center">
+        <img src="ImageServlet?image=<%= selectedCar.getImagePath() %>" width="600"  alt="car image"/>
+
+    </div>
+    <br>
     <ul class="list-group">
         <li class="list-group-item"><strong>ID:</strong> <%= selectedCar.getId() %></li>
         <li class="list-group-item"><strong>Brand:</strong> <%= selectedCar.getBrand() %></li>
@@ -92,7 +100,7 @@
     <div class="btn-group">
         <a href="cars.jsp" class="btn btn-secondary">Back to Car List</a>
         <% if("Admin".equals(type)) { %>
-        <a href="editCar.jsp?carID=<%= selectedCar.getId() %>" class="btn btn-warning">Edit Car</a>
+
 
         <a href="deleteCar.jsp?carID=<%= selectedCar.getId() %>" class="btn btn-danger">Delete Car</a>
         <% }%>

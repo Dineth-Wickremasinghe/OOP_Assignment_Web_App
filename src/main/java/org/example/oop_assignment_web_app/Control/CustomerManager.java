@@ -5,14 +5,7 @@ import org.example.oop_assignment_web_app.Entity.Customer;
 import java.io.*;
 
 public class CustomerManager {
-    private static final String CUSTOMER_FILE = "C:/Files/customer1.txt";
-    Customer customer;
-
-
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
+    private static final String CUSTOMER_FILE = "C:/Files/Customer.txt";
 
     // Register a customer by writing to the file
     public void registerCustomer(Customer c) {
@@ -21,10 +14,12 @@ public class CustomerManager {
             throw new IllegalArgumentException("Customer object cannot be null");
         }
 
+
+
         try {
             String hashedPassword = PasswordUtil.hashPassword(c.getPassword());
 
-            String line = String.join(",", c.getName(), c.getEmail(), hashedPassword, c.displayType());
+            String line = String.join(",", c.getName(), c.getEmail(), hashedPassword, c.displayType(), c.getFullName(), c.getPhone());
             try{
                 FileHandler.createFile(CUSTOMER_FILE);
 
@@ -33,15 +28,13 @@ public class CustomerManager {
 
             }
             catch (Exception e){
-                e.printStackTrace();
+                System.out.println("Error saving new customer account");
+
             }
 
-
-            System.out.println("File written to " + CUSTOMER_FILE);  //for testing
-            System.out.println(line);
         } catch (Exception e) {
             System.err.println("Error saving customer: " + e.getMessage());
-            e.printStackTrace();
+
         }
     }
 
@@ -50,14 +43,16 @@ public class CustomerManager {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(",");
-                if (parts.length == 4) {
+                if (parts.length >= 6) {
                     String storedUsername = parts[0].trim();
                     String storedHashedPassword = parts[2].trim();
 
                     if (storedUsername.equals(username) && PasswordUtil.checkPassword(password, storedHashedPassword)) {
                         return true; // Successful login
                     }
+
                 }
+
             }
         } catch (IOException e) {
             System.out.println("Error reading file: " + e.getMessage());
@@ -71,14 +66,15 @@ public class CustomerManager {
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(",");
 
-                if (parts.length >= 4) {
+                if (parts.length >= 6) {
                     String storedUsername = parts[0].trim();
                     String storedHashedPassword = parts[2].trim();
                     String email = parts[1].trim();
-
+                    String fullName = parts[4].trim();
+                    String number =parts[5].trim();
 
                     if (storedUsername.equals(username)) {
-                        return new Customer(storedUsername, email ,storedHashedPassword);
+                        return new Customer(storedUsername, email ,storedHashedPassword,fullName,number);
                     }
                 }
             }
@@ -87,6 +83,9 @@ public class CustomerManager {
         }
         return null; // Return null if user not found
     }
+
+
+
 
     public void editCustomer(Customer c) {
         File file = new File(CUSTOMER_FILE);
@@ -99,7 +98,8 @@ public class CustomerManager {
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(",");
                 if (parts[0].equals(c.getName())) {
-                    String text = String.join(",", c.getName(), c.getEmail(), hashedPassword, c.displayType());
+                    String phone = String.valueOf(c.getPhone());
+                    String text = String.join(",", c.getName(), c.getEmail(), hashedPassword, c.displayType(),c.getFullName(),phone);
                     pw.println(text);
                 } else {
                     pw.println(line);

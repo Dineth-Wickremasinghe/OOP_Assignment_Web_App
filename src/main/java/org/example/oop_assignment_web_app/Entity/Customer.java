@@ -1,27 +1,42 @@
 package org.example.oop_assignment_web_app.Entity;
 
 public class Customer extends User { //Inheritance
-    String type = "Customer";
+    private String type = "Customer";
+    private String fullName;
+    private String phone;
+
 
     public Customer(){
         this.type = "Customer";
     }
-    public Customer(String name, String email, String password) {
+    public Customer(String name, String email, String password, String fullName, String phone) {
         super(name,email,password);
+        this.fullName = fullName;
+        this.phone = phone;
 
     }
+
 
     //Polymorphism
     public String displayType() {
         return type;
     }
 
+    public String getFullName() {
+        return fullName;
+    }
 
-    public String getEmail() {
-        return super.getEmail();
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
-    public String getName(){
-        return super.getName();
+
+    public String getPhone() {
+        return phone;
     }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
 }
 
