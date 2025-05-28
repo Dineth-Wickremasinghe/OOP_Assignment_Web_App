@@ -6,11 +6,9 @@ import java.io.*;
 
 public class CarManager {
     private static final String FILE_PATH = "C:/Files/cars.txt";
-    //private LinkedList<Car> cars;
     private CarLinkedList cars;
 
     public CarManager() {
-        //this.cars = new LinkedList<Car>();
         FileHandler.createFile(FILE_PATH);
         cars = new CarLinkedList();
     }
@@ -42,11 +40,11 @@ public class CarManager {
             System.out.println("Error loading cars: " + e.getMessage());
         }
 //DSA MERGE SORT ALGORITHM BASED SORTING IN ASCENDING ORDER-------------------------------
-        if(cars.links!=0) {
+        if(cars.links!=0) { // if cars list is not empty
             //create a car array
             Car[] carArray = new Car[cars.links];
 
-            //Convert LinkedList to array
+            //Convert LinkedList to array with Car objects
             int i = 0;
             Link current = cars.first;
             while (current != null) {
@@ -70,15 +68,6 @@ public class CarManager {
 
         return cars;
     }
-
-
-
-
-    public CarLinkedList getCars(){
-        return cars;
-    }
-
-
 
     public boolean createCar(String brand, String model, double price,String imagePath) {
         try{FileHandler.createFile(FILE_PATH);}

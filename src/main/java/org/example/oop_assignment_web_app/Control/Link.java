@@ -5,7 +5,6 @@ import org.example.oop_assignment_web_app.Entity.Car;
 public class Link {
     public String id;
     public Link next;
-    public String key;
     public Car car;
 
 
