@@ -2,32 +2,22 @@ package org.example.oop_assignment_web_app.Control;
 
 import org.example.oop_assignment_web_app.Entity.Car;
 
-
-
 public class MergeSort {
     public static Car[] mergeSort(Car[] cars) {
-
-       //make linked list into array:
-        DArray array = new DArray(cars.length);
-        // Insert all cars into the DArray
+        MergeSortArray array = new MergeSortArray(cars.length);
         for (Car car : cars) {
             array.insert(car);
         }
 
-        // Perform merge sort
         array.mergeSort();
-
-        // Return the sorted array
         return array.getArray();
-
     }
 }
-
-class DArray {
+class MergeSortArray {
     private final Car[] theArray;
     private int nElements;
 
-    public DArray(int max) {
+    public MergeSortArray(int max) {
         theArray = new Car[max];
         nElements = 0;
     }
@@ -36,57 +26,56 @@ class DArray {
         theArray[nElements++] = car;
     }
 
-    public void print() {
-        for (int i = 0; i < nElements; i++) {
-            System.out.print(theArray[i] + " ");
-        }
-        System.out.println();
-    }
-
     public void mergeSort() {
-        Car[] workSpace = new Car[nElements];
-        recMergeSort(workSpace, 0, nElements - 1);
+        recMergeSort(theArray, 0, nElements - 1);
     }
 
-    private void recMergeSort(Car[] workSpace, int lowerBound, int upperBound) {
-        if (lowerBound == upperBound) {
-            return;
-        } else {
-            int mid = (lowerBound + upperBound) / 2;
-            recMergeSort(workSpace, lowerBound, mid);
-            recMergeSort(workSpace, mid + 1, upperBound);
-            merge(workSpace, lowerBound, mid + 1, upperBound);
+    private void recMergeSort(Car[] A, int p, int r) {  //stands for recursive Merge Sort
+        if (p < r) {
+            int q = (p + r) / 2;
+            recMergeSort(A, p, q);
+            recMergeSort(A, q + 1, r);
+            merge(A, p, q, r);
         }
     }
 
-    private void merge(Car[] workSpace, int lowPtr, int highPtr, int upperBound) {
-        int j = 0;
-        int lowerBound = lowPtr;
-        int mid = highPtr - 1;
-        int n = upperBound - lowerBound + 1;
+    private void merge(Car[] A, int p, int q, int r) {
+        int n1 = q - p + 1;
+        int n2 = r - q;
 
-        while (lowPtr <= mid && highPtr <= upperBound) {
-            if (theArray[lowPtr].getPrice() < theArray[highPtr].getPrice()) {
-                workSpace[j++] = theArray[lowPtr++];
+        Car[] L = new Car[n1 + 1];
+        Car[] R = new Car[n2 + 1];
+
+        // Copy left half into L[0..n1-1]
+        for (int i = 0; i < n1; i++) {
+            L[i] = A[p + i];
+        }
+
+        // Copy right half into R[0..n2-1]
+        for (int j = 0; j < n2; j++) {
+            R[j] = A[q + 1 + j];
+        }
+
+
+        L[n1] = new Car();
+        L[n1].setPrice(Double.MAX_VALUE);
+
+        R[n2] = new Car();
+        R[n2].setPrice(Double.MAX_VALUE);
+
+        int i = 0, j = 0;
+
+        for (int k = p; k <= r; k++) {
+            if (L[i].getPrice() <= R[j].getPrice()) {
+                A[k] = L[i];
+                i++;
             } else {
-                workSpace[j++] = theArray[highPtr++];
+                A[k] = R[j];
+                j++;
             }
         }
-
-        while (lowPtr <= mid) {
-            workSpace[j++] = theArray[lowPtr++];
-        }
-
-        while (highPtr <= upperBound) {
-            workSpace[j++] = theArray[highPtr++];
-        }
-
-        for (j = 0; j < n; j++) {
-            theArray[lowerBound + j] = workSpace[j];
-        }
     }
 
-    // Getter for sorted array
     public Car[] getArray() {
         Car[] result = new Car[nElements];
         System.arraycopy(theArray, 0, result, 0, nElements);

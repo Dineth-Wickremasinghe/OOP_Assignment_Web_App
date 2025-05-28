@@ -65,19 +65,6 @@ public class CarLinkedList {
     }
 
 
-    public void insertAfter(String key, Car car) {
-        Link current = find(key);
-        if (current == null) {
-            System.out.println("Key not available");
-        } else {
-            Link newLink = new Link(car);
-            newLink.next = current.next;
-            current.next = newLink;
-            links++;
-            System.out.println("New key added after " + key);
-        }
-    }
-
     public Link delete(String key) {
         Link current = first;
         Link prev = null;
