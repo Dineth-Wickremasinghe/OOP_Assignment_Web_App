@@ -40,7 +40,7 @@ public class CarManager {
             System.out.println("Error loading cars: " + e.getMessage());
         }
 //DSA MERGE SORT ALGORITHM BASED SORTING IN ASCENDING ORDER-------------------------------
-        if(cars.links!=0) { // if cars list is not empty
+        if(!cars.isEmpty()) { // if cars list is not empty
             //create a car array
             Car[] carArray = new Car[cars.links];
 

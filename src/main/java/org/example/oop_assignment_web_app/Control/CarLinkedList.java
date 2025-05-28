@@ -11,17 +11,11 @@ public class CarLinkedList {
         links = 0;
     }
 
-    public Link getFirst() {
-        return first;
-    }
 
     public boolean isEmpty() {
         return (first == null);
     }
 
-    public int size() {
-        return links;
-    }
 
     public Link find(String key) {
         Link current = first;
@@ -34,14 +28,6 @@ public class CarLinkedList {
         return null;
     }
 
-    public void displayList() { //for testing
-        Link current = first;
-        while (current != null) {
-            current.displayLink();
-            current = current.next;
-        }
-        System.out.println();
-    }
 
     public void insertFirst(Car car) {
         Link newLink = new Link(car);
